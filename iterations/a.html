@@ -27,49 +27,60 @@
         margin-bottom: 1vh;
         border: 1vh inset gray;
       }
+      .preview {
+        display: block;
+        width: 100%;
+        height: 80vh
+      }
     </style>
   </head>
   <body>
     <a href="../index.html">⬅ wide world of unglish</a>
     <h1>unglish - a</h1>
     <h2><blink>[currently minting!]</blink></h2>
-    <p>The innaugural unglish word production ceremony, in 4 distinct dialects minting across the superchain.</p>
+    <p>The innaugural unglish word production ceremony, available in 4 distinct dialects.</p>
+
+    <h3>Preview</h3>
+    <iframe id="mint-preview" class="preview" src="a-preview.html"></iframe>
+    <button onclick="document.getElementById('mint-preview').contentWindow.location.reload();" >🔀 New Word</button>
     <p>
-    <marquee>
-      🎶 Protip: when viewing your word, try the spacebar and arrow keys 🎶
-    </marquee>
-  </p>
+      <marquee>
+        🎶 Protip: click the word to make it sing! Then, try the spacebar and arrow keys 🎶
+      </marquee>
+    </p>
+
+    <dl>
+      <dt>Legend</dt>
+      <dd><p>Big string is the canonical spelling</p></dd>
+      <dd><p>Little string is the IPA pronunctiation guide</p></dd>
+      <dd><p>If it's red, that means it's been found to be vulgar. Shame!</p></dd>
+      <dd><p>If it's on a solid background, that means it's one of the 10000 most common english words according to my "sources". If that's not proof that English is a random walk, I'm not sure what else is.</p></dd>
+      <dt>Where am I allowed to use these words?</dt>
+      <dd><p>Anywhere. Maybe the better question is <em>do you want to</em>?</p></dd>
+    </dl>
+
+    <h3>Sponsor a word</h3>
+
+    <p>You can help to fund and advance unglish in many ways, but one way is to sponsor a word. This iteration has 4 dialects, each on a different affordable, L2 OP-stack flavoured blockchain. None of that had to make sense to you, btw.</p>
 
     <div class="highlight-card">
-      <h3>arbiglish a</h3>
-      <a href="https://highlight.xyz/mint/659a72b341fad46b6bc0e14d">highlight.xyz</a>
-      <link rel="stylesheet" href="https://mint.highlight.xyz/assets/embed.css" />
-      <div data-widget="highlight-mint-card" data-mint-collection-id="659a72b341fad46b6bc0e14d"></div>
-      <script type="module" crossorigin="true" src="https://mint.highlight.xyz/assets/embed.js?v=1"></script>
+      <h5>arbiglish a</h5>
+      <a class="mint-button" href="https://highlight.xyz/mint/659a72b341fad46b6bc0e14d">sponsor a word today!</a>
     </div>
 
     <div class="highlight-card">
-      <h3>baglish a</h3>
-      <a href="https://highlight.xyz/mint/659a722663f21afad4091378">highlight.xyz</a>
-      <link rel="stylesheet" href="https://mint.highlight.xyz/assets/embed.css" />
-      <div data-widget="highlight-mint-card" data-mint-collection-id="659a722663f21afad4091378"></div>
-      <script type="module" crossorigin="true" src="https://mint.highlight.xyz/assets/embed.js?v=1"></script>
+      <h5>baglish a</h5>
+      <a class="mint-button" href="https://highlight.xyz/mint/659a722663f21afad4091378">sponsor a word today!</a>
     </div>
 
     <div class="highlight-card">
-      <h3>optiglish a</h3>
-      <a href="https://highlight.xyz/mint/659a71c063f21afad4091374">highlight.xyz</a>
-      <link rel="stylesheet" href="https://mint.highlight.xyz/assets/embed.css" />
-      <div data-widget="highlight-mint-card" data-mint-collection-id="659a71c063f21afad4091374"></div>
-      <script type="module" crossorigin="true" src="https://mint.highlight.xyz/assets/embed.js?v=1"></script>
+      <h5>optiglish a</h5>
+      <a class="mint-button" href="https://highlight.xyz/mint/659a71c063f21afad4091374">sponsor a word today!</a>
     </div>
 
     <div class="highlight-card">
-      <h3>zorglish a</h3>
-      <a href="https://highlight.xyz/mint/659a72fe63f21afad409137a">highlight.xyz</a>
-      <link rel="stylesheet" href="https://mint.highlight.xyz/assets/embed.css" />
-      <div data-widget="highlight-mint-card" data-mint-collection-id="659a72fe63f21afad409137a"></div>
-      <script type="module" crossorigin="true" src="https://mint.highlight.xyz/assets/embed.js?v=1"></script>
+      <h5>zorglish a</h5>
+      <a class="mint-button" href="https://highlight.xyz/mint/659a72fe63f21afad409137a">sponsor a word today!</a>
     </div>
   </body>
 </html>
