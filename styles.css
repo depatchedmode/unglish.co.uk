@@ -75,3 +75,15 @@
   dd + dt {
     margin-top: 1rem;
   }
+
+  dt,h1,h2,h3,h4,h5,h6 {
+    max-width: 48ch
+  }
+
+  h1,h2,h3 {
+    max-width: 20ch;
+  }
+
+  p, dd, li {
+    max-width: 70ch;
+  }
