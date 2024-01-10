@@ -18,37 +18,69 @@
   }
 
   body {
+    max-width: 768px;
     margin: 0;
-    padding: 2rem;
+    padding: 3rem 2rem;
     font-family: -apple-system, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     line-height: 1.6;
+    border: 3vh groove var(--border-color);
     background-color: var(--bg-color);
     color: var(--text-color)
   }
+
+  @media screen and (min-width: 800px) {
+    body {
+      margin: 4rem auto;
+      padding: 5rem max(4rem, 3vw);
+    }
+  }
+
   h1,h2,h3,h4,h5,h6 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-bottom: 0;
     color: var(--header-color);
-    line-height: 1.2;
+    line-height: 1.15;
   }
+
   h1 {
-    font-size: 5.61rem;
+    font-size: 3.815rem;
   }
   h2 {
-    font-size: 4.209rem;
+    font-size: 3.052rem;
   }
   h3 {
-    font-size: 3.157rem;
+    font-size: 2.441rem;
   }
   h4 {
-    font-size: 2.369rem;
+    font-size: 1.953rem;
   }
   h5 {
-    font-size: 1.777rem;
+    font-size: 1.563rem;
   }
   h6, dt {
-    font-size: 1.333rem;
+    font-size: 1.25rem;
   }
+
+  @media screen and (min-width: 640px) {
+    h1 {
+      font-size: 5.61rem;
+    }
+    h2 {
+      font-size: 4.209rem;
+    }
+    h3 {
+      font-size: 3.157rem;
+    }
+    h4 {
+      font-size: 2.369rem;
+    }
+    h5 {
+      font-size: 1.777rem;
+    }
+    h6, dt {
+      font-size: 1.333rem;
+    }
+  }
+  
   a {
     color: var(--link-color)
   }
