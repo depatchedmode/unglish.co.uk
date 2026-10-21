@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Word generator — Unglish</title>
+  <meta name="description" content="Experiment with the sounds, syllables and spelling of Unglish. Keep a link to any word.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Unglish">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Word generator — Unglish">
+  <meta property="og:description" content="Experiment with the sounds, syllables and spelling of Unglish. Keep a link to any word.">
+  <meta property="og:url" content="https://unglish.co.uk/generator.html">
+  <meta property="og:image" content="https://unglish.co.uk/opengraph.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="600">
+  <meta property="og:image:alt" content="The Unglish emblem: a monocled face drawn inside a yellow letter U on a blue disc.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="assets/discovery.mjs"></script>
+  <script type="module" src="assets/period.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <h1>Word generator</h1>
+    <p class="tagline">The workbench, with its lid off.</p>
+    <nav aria-label="Main navigation"><ul>
+      <li><a href="index.html">Unglish</a></li>
+      <li><a href="generator.html" aria-current="page">Generator</a></li>
+      <li><a href="index.html#editions">Editions</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://github.com/unglish/word-generator">Source</a></li>
+    </ul></nav>
+  </header>
+  <main id="main">
+    <section class="specimen" data-discovery aria-label="Word discovery">
+      <p class="kicker">Specimen under examination</p>
+      <div aria-live="polite" aria-atomic="true">
+        <h2 data-word>A word awaits.</h2>
+        <p class="pronunciation" data-pronunciation></p>
+      </div>
+      <div class="actions">
+        <button type="button" data-another disabled>Another word</button>
+        <button type="button" data-listen disabled>Listen</button>
+
+        <button type="button" data-stop disabled>Stop</button>
+      </div>
+      <p class="status" data-speech-status role="status"></p>
+      <details>
+        <summary>Voice &amp; playback</summary>
+        <fieldset data-speech-controls disabled>
+          <legend>Browser speech</legend>
+          <label>Voice <select data-voice><option value="">Browser default</option></select></label>
+          <label>Speed <input data-rate type="range" min="0.5" max="1.5" step="0.05" value="1"> <output>1.00×</output></label>
+          <label>Pitch <input data-pitch type="range" min="0.5" max="1.5" step="0.05" value="1"> <output>1.00×</output></label>
+        </fieldset>
+        <p>Your browser reads the spelling. The pronunciation guide records the generator’s intended sounds; the two may disagree. Available voices depend on your browser and device.</p>
+      </details>
+      <div class="actions">
+        <a data-permalink hidden>Link to this word</a>
+        <button type="button" data-copy disabled>Copy link</button>
+      </div>
+      <p class="status" data-generation-status role="status">Loading the generator… If no word appears, reload the page in a browser with JavaScript enabled.</p>
+      <p data-recovery hidden><a href="generator.html">Start a new word</a></p>
+      <noscript><p>Generating and speaking words needs JavaScript. The introduction, editions and source links below remain available.</p></noscript>
+    </section>
+    <form class="settings" data-generator-form>
+      <fieldset data-settings disabled>
+        <legend>Word settings</legend>
+        <label>Seed <textarea name="seed" rows="2" maxlength="256" autocomplete="off" spellcheck="false" aria-describedby="seed-help"></textarea></label>
+        <p id="seed-help">The same seed and settings bring back the same word. Leave the seed blank for a surprise.</p>
+        <label>Syllables <select name="syllables"><option value="auto">Automatic</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select></label>
+        <label><input type="checkbox" name="morphology" checked> Allow prefixes and suffixes</label>
+        <label>Distribution <select name="mode"><option value="lexicon">Lexicon — word-list distribution</option><option value="text">Text — running-text distribution</option></select></label>
+        <p>These modes use different syllable-count distributions. A fixed syllable count takes precedence.</p>
+        <button type="submit">Generate with these settings</button>
+      </fieldset>
+    </form>
+    <hr>
+    <section aria-labelledby="generator-about">
+      <h2 id="generator-about">Inside the generator</h2>
+      <p>Engine: <span data-engine-label>Unglish u</span>. Words are assembled from phonemes, given a spelling, and accompanied by an <abbr title="International Phonetic Alphabet">IPA</abbr> pronunciation.</p>
+      <p>A word link records the engine snapshot, seed and generation settings. Voices belong to the browser, so the same word may sound different on another device.</p>
+      <p><a href="https://github.com/unglish/word-generator">Read the source &amp; follow development</a> · <a href="assets/engines/u-fd5ded6d-v1/README.md">This site's engine snapshot</a></p>
+    </section>
+  </main>
+  <hr class="fleuron">
+  <footer>
+    <address>Unglish is kept by depatchedmode. Correspondence welcome in the <a href="https://farcaster.xyz/~/channel/unglish">/unglish channel on Farcaster</a>.</address>
+    <p><a href="https://github.com/unglish/word-generator">Word-generator repository</a> · <a href="https://github.com/depatchedmode/unglish.co.uk">Website repository</a></p>
+    <p class="counter" data-counter hidden>This browser has paid <span class="odometer" data-odometer aria-hidden="true"></span><span class="visually-hidden" data-odometer-text></span> <span data-odometer-unit>visits</span> to Unglish (<span data-odometer-decimal></span> in base ten; the counter keeps <a href="index.html#idgaf">base IDGAF</a>). Records are kept on your computer; nobody else is counting.</p>
+    <p>Last revised <time datetime="2026-10-21">21 October 2026</time>. Written by hand; best heard aloud. Best viewed on a glass rectangle.</p>
+    <p class="badges"><span class="badge"><span><b>Any</b> browser</span></span><span class="badge"><span><b>No</b> frameworks</span></span></p>
+  </footer>
+</body>
+</html>

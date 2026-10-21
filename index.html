@@ -1,87 +1,160 @@
-<html>
-  <head>
-    <title>unglish</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- HTML Meta Tags -->
-    <title>unglish</title>
-    <meta name="description" content="The world's most aspirational gibberish english replacement.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unglish</title>
+  <meta name="description" content="The world’s most aspirational gibberish English replacement.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Unglish">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Unglish">
+  <meta property="og:description" content="The world’s most aspirational gibberish English replacement.">
+  <meta property="og:url" content="https://unglish.co.uk/">
+  <meta property="og:image" content="https://unglish.co.uk/opengraph.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="600">
+  <meta property="og:image:alt" content="The Unglish emblem: a monocled face drawn inside a yellow letter U on a blue disc.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="assets/discovery.mjs"></script>
+  <script type="module" src="assets/period.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <h1>unglish</h1>
+    <p class="tagline">The world’s most aspirational gibberish English replacement.</p>
+    <nav aria-label="Main navigation"><ul>
+      <li><a href="index.html" aria-current="page">Unglish</a></li>
+      <li><a href="generator.html">Generator</a></li>
+      <li><a href="index.html#editions">Editions</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="https://github.com/unglish/word-generator">Source</a></li>
+    </ul></nav>
+  </header>
+  <main id="main">
+    <section class="specimen" data-discovery aria-label="Word discovery">
+      <p class="kicker">Freshly coined</p>
+      <div aria-live="polite" aria-atomic="true">
+        <h2 data-word>A word awaits.</h2>
+        <p class="pronunciation" data-pronunciation></p>
+      </div>
+      <p class="sense"><i>Part of speech undetermined.</i> Meaning withheld pending further study.</p>
+      <div class="actions">
+        <button type="button" data-another disabled>Another word</button>
+        <button type="button" data-listen disabled>Listen</button>
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://unglish.co.uk">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="unglish">
-    <meta property="og:description" content="The world's most aspirational gibberish english replacement.">
-    <meta property="og:image" content="https://unglish.co.uk/opengraph.png">
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="depatchedmode.github.io">
-    <meta property="twitter:url" content="https://unglish.co.uk">
-    <meta name="twitter:title" content="unglish">
-    <meta name="twitter:description" content="The world's most aspirational gibberish english replacement.">
-    <meta name="twitter:image" content="https://unglish.co.uk/opengraph.png">
-
-  </head>
-  <body>
-    <h1>Welcome to the wide world of unglish!</h1>
-    <p>We all accept English as a gibberish language collectively co-constructed in real time across the globe. It's functional. It's cultural. It's an ungodly mishmash of borrowed words and sounds. It makes no sense, but it gets the job done.</p>
-    <p>Some folks like the <abbr title="Obstruent Etymology Dictators">OED</abbr> attempt to maintain control and impose order, but it's a futile resistance.</p>
-    <p>unglish seeks to bring the insanity of English to its natural conclusion: infinite gibberish, self-replicating, in dynamic equilibrium. All while sounding kind of "english" when you squint your ears.</p>
-    <h2>Iterations</h2>
-    <dl>
-      <dt><a href="iterations/a.html">unglish a</a> • <a href="https://highlight.xyz/user/@depatchedmode.eth">highlight.xyz</a></dt>
-        <dd><blink>[currently minting!]</blink></dd>
-        <dd>The four initial unglish dialects: zorglish a, arbiglish a, baglish a, optiglish a</dd>
-        <dd>Second release of the word generation engine, beginning the transition to word construction following the Sonority Sequencing Principle</dd>
-        <dd>Format: Long form generation of interactive standards-compliant accessible HTML</dd>
-        <dd>Released: 2024-01-06</dd>
-      <dt><a href="https://teia.art/objkt/825662">Unglish 0</a> • teia.art</dt>
-        <dd><blink>[editions still available!]</blink></dd>
-        <dd>First official release of the unglish word generation engine, using a naive approach</dd>
-        <dd>Format: Edition of 20, Infinite generative HTML</dd>
-        <dd>Released: 2023-06-11</dd>
-      <dt><a href="https://causalislands.com">Unglish 0-rc1</a> • CausalIslands.com</dt>
-        <dd>Sneak Preview - looped on the main stage during the conference closing party</dd>
-        <dd>infinite generative HTML</dd>
-        <dd>Exhibited: 2023-04-26</dd>
-    </dl>
-    <h2>Dictionary</h2>
-    <marquee>token gated definitions coming soon</marquee>
-    <h2>FAQs</h2>
-    <dl>
-      <dt>What is unglish?</dt>
-      <dd><p>It's a language that sounds like english, but isn't... yet.</p></dd>
-      <dt>What's the goal?</dt>
-      <dd><p>To build many worlds of impossible to understand gibberish, that each have a graceful internal coherence. There will be heaps of poetry and prose. Conversations and disagreements. Idle thoughts and musings.</p>
-      <p>But, if we do it right, its true meaning will be impregnababble.</p></dd>
-      <dt>What versioning system do you use?</dt>
-      <dd>
-        <p>unglish is versioned using a base<abbr title="Iterative Deviation to Grammatically Achieve Function">IDGAF</abbr> system. We start with `a`. And then we'll cycle through `e`, `i`, `o` and `u`. And then we'll loop back to `a` and add `b` (the lowest indexed english consonant) to get: `ab`.</p>
-        <p>At some point, we'll add spaces and punction. And eventually, if we iterate high enough, maybe we'll have written a novel.</p>
-      </dd>
-      <dt>Who is authorized to produce unglish words?</dt>
-      <dd><p>Only me and you.</p></dd>
-      <dt>Who's "me"?</dt>
-      <dd><p>depatchedmode</p></dd>
-      <dt>What's the roadmap?</dt>
-      <dd><p>Great question. I'll be as brief and vague as I can. <em>Present state</em> is shown obliquely.</p>
-        <p>
-          🏗️: <em>Words</em> → Definitions → Grammar → Writing.<br/> 
-          👂: <em>IPA english phonemes</em> → other phonetic systems → all phonemes.<br/> 
-          🗣️: <em>SpeechSynthesisAPI</em> → SSML? → Custom Voices? <br/>
-          🧮: <em>1</em> → 2 → ♾️<br/>
-        </p>
-        <p>All told, I think the whole project witll take 50 years, give or take a century.</p>
-        <p>
-          Presently, we're optimizing for <abbr title="Time To First Poetry">TTFP</abbr>
-        </p>
-      </dd>
-      <dt>What projects/movements are currently inspiring this effort?</dt>
-      <dd><a href="https://en.wikipedia.org/wiki/Flarf_poetry">Flarf Poetry</a></dd>
-      <dd><a href="https://jacket2.org/commentary/ecstacist-pwoermd">pwoermds</a></dd>
-    </dl>
-    <h2>Diaspora</h2>
-    <p>Join us in the <a href="https://warpcast.com/~/channel/unglish">/unglish</a> channel on Warpcast.</p>
-  </body>
+        <button type="button" data-stop disabled>Stop</button>
+      </div>
+      <p class="status" data-speech-status role="status"></p>
+      <details>
+        <summary>Voice &amp; playback</summary>
+        <fieldset data-speech-controls disabled>
+          <legend>Browser speech</legend>
+          <label>Voice <select data-voice><option value="">Browser default</option></select></label>
+          <label>Speed <input data-rate type="range" min="0.5" max="1.5" step="0.05" value="1"> <output>1.00×</output></label>
+          <label>Pitch <input data-pitch type="range" min="0.5" max="1.5" step="0.05" value="1"> <output>1.00×</output></label>
+        </fieldset>
+        <p>Your browser reads the spelling. The pronunciation guide records the generator’s intended sounds; the two may disagree. Available voices depend on your browser and device.</p>
+      </details>
+      <div class="actions">
+        <a data-permalink hidden>Link to this word</a>
+        <button type="button" data-copy disabled>Copy link</button>
+        <a href="generator.html" data-experiment>Generator settings</a>
+      </div>
+      <p class="status" data-generation-status role="status">Loading the generator… If no word appears, reload the page in a browser with JavaScript enabled.</p>
+      <p data-recovery hidden><a href="index.html">Start a new word</a></p>
+      <noscript><p>Generating and speaking words needs JavaScript. The introduction, editions and source links below remain available.</p></noscript>
+      <div class="tape">
+        <marquee scrollamount="4">Definitions under construction</marquee>
+        <button type="button" data-hold aria-pressed="false" hidden>Hold still</button>
+      </div>
+    </section>
+    <section aria-labelledby="intro-title">
+      <h2 id="intro-title">The wide world of Unglish</h2>
+      <p>You can often pronounce an English word before you know what it means. You can sometimes get several years' use out of it before anybody notices.</p>
+      <p>We all accept English as a gibberish language, collectively made up in real time across the globe. It's functional. It's cultural. It's an ungodly mishmash of borrowed words and sounds. It makes no sense, but it gets the job done.</p>
+      <p>Some folks, like the OED<sup><a href="#oed-footnote" id="oed-reference" aria-label="Footnote 1">1</a></sup>, attempt to maintain control and impose order. It's a futile resistance.</p>
+      <p>Unglish seeks to bring the insanity of English to its natural conclusion: infinite gibberish, self-replicating and in dynamic equilibrium. All while sounding kind of English when you squint your ears.</p>
+      <p class="footnote" id="oed-footnote"><sup>1</sup> Obstruent Etymology Dictators. <a href="#oed-reference" aria-label="Back to footnote 1 reference">↩</a></p>
+    </section>
+    <section id="editions" aria-labelledby="editions-title">
+      <h2 id="editions-title">Editions</h2>
+      <p>The generator keeps developing. Each edition keeps the rules it started with.</p>
+      <div class="ledger-wrap">
+        <table class="ledger">
+          <caption>Editions issued to date, most recent first</caption>
+          <thead><tr><th scope="col">Edition</th><th scope="col">Issued</th><th scope="col">Particulars</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="iterations/a.html">Unglish a</a></th>
+              <td><time datetime="2024-01-06">6 Jan. 2024</time></td>
+              <td>
+                <p>Words with their own melodies. Four names, four chains, one generator: arbiglish, baglish, optiglish and zorglish. <span class="blink">[baglish still minting!]</span></p>
+                <p><a href="iterations/a.html">Play the set &amp; find the collections</a></p>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://teia.art/objkt/825662">Unglish 0</a></th>
+              <td><time datetime="2023-06-11">11 June 2023</time></td>
+              <td><p>The first released generator, using a naive approach. An edition of 20, each generating words indefinitely. <a href="https://teia.art/objkt/825662">View on Teia</a>.</p></td>
+            </tr>
+            <tr>
+              <th scope="row">Unglish 0-rc1</th>
+              <td><time datetime="2023-04-26">26 Apr. 2023</time></td>
+              <td><p>An early preview, looped on the main stage at the <a href="https://causalislands.com">Causal Islands</a> conference closing party.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Sale status as checked on <time datetime="2026-10-20">20 October 2026</time>.</p>
+    </section>
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">An ongoing experiment</h2>
+      <p>Unglish generates words from sounds and rules that resemble English. The spelling and pronunciation arrive together; what you make of them is your affair.</p>
+      <p>The <a href="generator.html">word generator</a> <span class="blink">[new!]</span> is the current workbench. Its code is open, and development updates live in the <a href="https://github.com/unglish/word-generator">associated repository</a>.</p>
+      <details>
+        <summary>Who is authorised to produce Unglish words?</summary>
+        <p>Only me and you.</p>
+      </details>
+      <details>
+        <summary>What is the ambition?</summary>
+        <p>To build many worlds of impossible to understand gibberish, each with a graceful internal coherence. Poetry and prose. Conversations and disagreements. Idle thoughts and musings.</p>
+        <p>But, if we do it right, its true meaning will be impregnababble.</p>
+      </details>
+      <details id="idgaf">
+        <summary>What versioning system do you use?</summary>
+        <p>Unglish is versioned in base <abbr title="Iterative Deviation to Grammatically Achieve Function">IDGAF</abbr>. We started with <code>a</code>, then cycle through <code>e</code>, <code>i</code>, <code>o</code> and <code>u</code>. After that we loop back to <code>a</code> and add <code>b</code>, the lowest-indexed English consonant, to get <code>ab</code>.</p>
+        <p>At some point we’ll add spaces and punctuation. If we iterate high enough, we may eventually have written a novel.</p>
+      </details>
+      <details>
+        <summary>What’s the programme of work?</summary>
+        <p>I’ll be as brief and vague as I can. The present state is shown <em>obliquely</em>.</p>
+        <ol class="progressions">
+          <li><em>Words</em> → definitions → grammar → writing.</li>
+          <li><em>English phonemes, in IPA</em> → other phonetic systems → all phonemes.</li>
+          <li><em>The browser’s speech synthesis</em> → SSML? → custom voices?</li>
+        </ol>
+        <p>Presently we are optimising for <abbr title="Time To First Poetry">TTFP</abbr>. All told, the whole project should take 50 years, give or take a century.</p>
+      </details>
+    </section>
+    <section id="kindred" aria-labelledby="kindred-title">
+      <h2 id="kindred-title">Kindred spirits</h2>
+      <p>Projects and movements presently egging this effort on:</p>
+      <ul class="kindred">
+        <li><a href="https://en.wikipedia.org/wiki/Flarf_poetry">Flarf poetry</a></li>
+        <li><a href="https://jacket2.org/commentary/ecstacist-pwoermd">Pwoermds</a></li>
+      </ul>
+    </section>
+  </main>
+  <hr class="fleuron">
+  <footer>
+    <address>Unglish is kept by depatchedmode. Correspondence welcome in the <a href="https://farcaster.xyz/~/channel/unglish">/unglish channel on Farcaster</a>.</address>
+    <p><a href="https://github.com/unglish/word-generator">Word-generator repository</a> · <a href="https://github.com/depatchedmode/unglish.co.uk">Website repository</a></p>
+    <p class="counter" data-counter hidden>This browser has paid <span class="odometer" data-odometer aria-hidden="true"></span><span class="visually-hidden" data-odometer-text></span> <span data-odometer-unit>visits</span> to Unglish (<span data-odometer-decimal></span> in base ten; the counter keeps <a href="#idgaf">base IDGAF</a>). Records are kept on your computer; nobody else is counting.</p>
+    <p>Last revised <time datetime="2026-10-21">21 October 2026</time>. Written by hand; best heard aloud. Best viewed on a glass rectangle.</p>
+    <p class="badges"><span class="badge"><span><b>Any</b> browser</span></span><span class="badge"><span><b>No</b> frameworks</span></span></p>
+  </footer>
+</body>
 </html>

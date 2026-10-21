@@ -1,0 +1,175 @@
+# @unglish/word-generator
+
+Generate English-like nonce words using configurable phonotactics.
+
+## Human review pilot
+
+The separate `review.html` page collects anonymous written-wordlikeness judgments
+on frozen samples. Supabase stores responses privately for the owner; reviewers
+can only receive words and submit ratings. See the
+[setup, export, and verification guide](./docs/human-review.md).
+
+## Install
+
+```bash
+npm install @unglish/word-generator
+```
+
+## Quick Start
+
+```ts
+import { generateWord, generateWords } from "@unglish/word-generator";
+
+const one = generateWord();
+console.log(one.written.clean);
+
+const deterministic = generateWord({ seed: 42 });
+console.log(deterministic.written.clean);
+
+const batch = generateWords(5, { seed: 42, mode: "lexicon" });
+console.log(batch.map(w => w.written.clean));
+```
+
+`generateWords(count, { seed })` is deterministic and yields different words in
+the same seeded stream.
+
+By default generation includes morphology when the active config enables it.
+Pass `{ morphology: false }` for bare root forms.
+
+## RNG Control
+
+```ts
+import { createSeededRng, generateWord } from "@unglish/word-generator";
+
+const rand = createSeededRng(42);
+const a = generateWord({ rand });
+const b = generateWord({ rand });
+```
+
+Use `seed` for one-off deterministic calls, or pass `rand` to control a shared
+RNG stream.
+
+## Trace-First Diagnostics
+
+For n-gram or orthography outliers, use `trace: true` and inspect `word.trace`
+instead of only checking surface strings.
+
+```ts
+import { generateWord } from "@unglish/word-generator";
+
+const word = generateWord({ seed: 42, mode: "lexicon", trace: true });
+
+console.log(word.written.clean);
+console.log(word.trace?.summary);
+console.log(word.trace?.targetPhonemeCount);
+console.log(word.trace?.syllablePlans);
+console.log(word.trace?.stages[0]);
+console.log(word.trace?.graphemeSelections[0]);
+```
+
+For top-down length diagnostics, inspect:
+
+- `trace.targetPhonemeCount` for the planned root phoneme budget
+- `trace.syllablePlans` for the per-root-syllable onset/coda budget
+- `trace.structural` entries with `event === "morphologyGuard"` when an affix
+  plan is downgraded because the remaining root would be too short
+
+Detailed trace workflow: [`docs/word-trace-diagnostics.md`](./docs/word-trace-diagnostics.md)
+
+## Top-Down Phoneme Targeting
+
+Generation now plans words top-down:
+
+1. sample a target phoneme count,
+2. sample a compatible syllable count,
+3. distribute onset/coda consonant budgets across syllables,
+4. generate phonemes, repairs, pronunciation, and spelling.
+
+The built-in English config ships with this wired through:
+
+- `phonemeLengthWeights`
+- `phonemeToSyllableWeights`
+
+Custom language configs should provide both tables. They are required parts of
+`LanguageConfig`, not optional tuning extras.
+
+After retuning those tables, run:
+
+```bash
+npm run analyze:phoneme-length
+npm run test:quality
+```
+
+## Boundary Policy Config (0.6.0)
+
+Boundary adjustment probabilities moved to a dedicated
+`generationWeights.boundaryPolicy` object.
+
+```ts
+import { createGenerator, englishConfig } from "@unglish/word-generator";
+
+const generator = createGenerator({
+  ...englishConfig,
+  generationWeights: {
+    ...englishConfig.generationWeights,
+    boundaryPolicy: {
+      equalSonorityDrop: 90,
+      risingCodaDrop: 25,
+    },
+  },
+});
+```
+
+Breaking change:
+
+- `generationWeights.probability.boundaryDrop` was removed.
+- Use `generationWeights.boundaryPolicy.equalSonorityDrop` instead.
+
+## Pronunciation Config
+
+Stress and aspiration are declarative under `pronunciation`.
+
+```ts
+import { createGenerator, englishConfig } from "@unglish/word-generator";
+
+const generator = createGenerator({
+  ...englishConfig,
+  pronunciation: {
+    ...englishConfig.pronunciation,
+    stress: {
+      ...englishConfig.pronunciation.stress,
+      primary: { type: "penultimate" },
+    },
+    aspiration: {
+      enabled: true,
+      targets: [{ segment: "onset", index: 0, manner: ["stop"], voiced: false }],
+      rules: [{ id: "word-initial", when: { wordInitial: true }, probability: 100 }],
+      fallbackProbability: 0,
+    },
+  },
+});
+```
+
+## Development
+
+```bash
+npm test
+npm run lint
+npm run dev
+```
+
+Additional checks:
+
+- `npm run test:quality`
+- `npm run analyze:phoneme-length`
+- `npm run test:perf`
+- `npm run analyze:phonemes`
+- `npm run analyze:trigrams`
+- `npm run audit:trace`
+
+## Documentation
+
+- Contribution workflow: [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+- Agent-specific constraints: [`agents.md`](./agents.md)
+- Diagnostics/design docs index: [`docs/README.md`](./docs/README.md)
+- Tuning notes and diagnostics: [`TUNING.md`](./TUNING.md)

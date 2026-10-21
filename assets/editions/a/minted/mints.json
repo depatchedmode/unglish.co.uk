@@ -1,0 +1,2054 @@
+{
+ "checked": "2026-10-21",
+ "files": {
+  "index.html": "be06216378da101ca4bf9ed9ad6ef463ef34999e9db1f69eec8513c70ed0d582",
+  "style.css": "bb0da6007121652df40522f62574adedb5986ac8221839e1e067dbd9bb0f3130",
+  "bundle.js": "fe01fdae522de8ee3c4c07007bf6a3df40ee8290b4450351e305a4c0d43d0880"
+ },
+ "arweave": [
+  "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+  "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+  "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+  "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI"
+ ],
+ "collections": [
+  {
+   "dialect": "arbiglish",
+   "chain": "Arbitrum",
+   "chainId": 42161,
+   "contract": "0x082daac1b2c74197d50341cbbeb9da7fc4a59930",
+   "supply": 14,
+   "tokens": [
+    {
+     "tokenId": 1,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=1&h=0x95d5de186aac0c00774128e2b27d80be6477124ea6254479c5183e179218a489&bh=0x26b43ed171d5ffdf6283d9679bf5ffaf323852e74c9383c08de790564dd683ef&bn=167968881&t=1704621098&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 8,
+      "sonority": 19,
+      "melodyLength": 8,
+      "border": "dashed",
+      "pleasantness": 1.5134680859617542
+     }
+    },
+    {
+     "tokenId": 2,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=2&h=0xa4be980227414f84fd5f6842c7ea90f80df7617d2a017431b5208fd2e288a15c&bh=0xc79aa2dab120b7fa599e7c9c60a2b33e2a534356bb6d2d3f800e0ff1a7aff7e6&bn=167980179&t=1704623993&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 0.7473964345408604
+     }
+    },
+    {
+     "tokenId": 3,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=3&h=0xa4be980227414f84fd5f6842c7ea90f80df7617d2a017431b5208fd2e288a15c&bh=0xc79aa2dab120b7fa599e7c9c60a2b33e2a534356bb6d2d3f800e0ff1a7aff7e6&bn=167980179&t=1704623993&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 1.1518455654133937
+     }
+    },
+    {
+     "tokenId": 4,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=4&h=0xa4be980227414f84fd5f6842c7ea90f80df7617d2a017431b5208fd2e288a15c&bh=0xc79aa2dab120b7fa599e7c9c60a2b33e2a534356bb6d2d3f800e0ff1a7aff7e6&bn=167980179&t=1704623993&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 8,
+      "sonority": 22,
+      "melodyLength": 8,
+      "border": "groove",
+      "pleasantness": 2.9619517661238737
+     }
+    },
+    {
+     "tokenId": 5,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=5&h=0xa4be980227414f84fd5f6842c7ea90f80df7617d2a017431b5208fd2e288a15c&bh=0xc79aa2dab120b7fa599e7c9c60a2b33e2a534356bb6d2d3f800e0ff1a7aff7e6&bn=167980179&t=1704623993&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 8,
+      "sonority": 23,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 2.3217554614765827
+     }
+    },
+    {
+     "tokenId": 6,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=6&h=0xa4be980227414f84fd5f6842c7ea90f80df7617d2a017431b5208fd2e288a15c&bh=0xc79aa2dab120b7fa599e7c9c60a2b33e2a534356bb6d2d3f800e0ff1a7aff7e6&bn=167980179&t=1704623993&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 1.8643462543893943
+     }
+    },
+    {
+     "tokenId": 7,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=7&h=0xb2a3db96834cd6f60107cd69e90457a0073ce033282bbaa834ac0f4fe62f4a27&bh=0x1e6ef717283fb061194a7b593f7eb443cc31fa43078b4771fa0a8318414dc839&bn=167991510&t=1704626915&wa=0x257bff0c282ea66560163826aad1dda8644b403f&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 18,
+      "melodyLength": 2,
+      "border": "solid",
+      "pleasantness": 3.3684423175716
+     }
+    },
+    {
+     "tokenId": 8,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=8&h=0xb2a3db96834cd6f60107cd69e90457a0073ce033282bbaa834ac0f4fe62f4a27&bh=0x1e6ef717283fb061194a7b593f7eb443cc31fa43078b4771fa0a8318414dc839&bn=167991510&t=1704626915&wa=0x257bff0c282ea66560163826aad1dda8644b403f&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 17,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 2.1053155570989475
+     }
+    },
+    {
+     "tokenId": 9,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=9&h=0x3821a53c5458212f586bbacea5c31474fd875fbda8cf3c55f517219909c5f63d&bh=0xe31850b297284b58547fc853a3d6bea5aea6d993bb827652af1d6848392d71e8&bn=167997963&t=1704628559&wa=0x704cf202792341d79a9fd6dd97046aa7ef3f4319&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 7,
+      "sonority": 24,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.9151997934210807
+     }
+    },
+    {
+     "tokenId": 10,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=10&h=0xe62fe49f2ef26b3dc2218c73d5d17576a2de9320f2fcb180b546baf3e3b54a09&bh=0x9723ff97c2aa957907fc59d12f0d140f03ff029126b2739d57903ebc05fdc747&bn=168278524&t=1704702074&wa=0xa3eac0016f6581ac34768c0d4b99ddcd88071c3c&ms=3&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 2,
+      "border": "outset",
+      "pleasantness": 1.8567718000267632
+     }
+    },
+    {
+     "tokenId": 11,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=11&h=0xe62fe49f2ef26b3dc2218c73d5d17576a2de9320f2fcb180b546baf3e3b54a09&bh=0x9723ff97c2aa957907fc59d12f0d140f03ff029126b2739d57903ebc05fdc747&bn=168278524&t=1704702074&wa=0xa3eac0016f6581ac34768c0d4b99ddcd88071c3c&ms=3&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 15,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 2.2643302271608263
+     }
+    },
+    {
+     "tokenId": 12,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=12&h=0xe62fe49f2ef26b3dc2218c73d5d17576a2de9320f2fcb180b546baf3e3b54a09&bh=0x9723ff97c2aa957907fc59d12f0d140f03ff029126b2739d57903ebc05fdc747&bn=168278524&t=1704702074&wa=0xa3eac0016f6581ac34768c0d4b99ddcd88071c3c&ms=3&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 4,
+      "border": "inset",
+      "pleasantness": 2.6271232480648905
+     }
+    },
+    {
+     "tokenId": 13,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=13&h=0xc5cd0fd1a99076a95d502b9377ad09da9d893d5119d10a80df0063a54738b9be&bh=0xda7eda78fad7d20c63d70b05c043dc8cd02ae79508a66ae65c771799cff841f6&bn=169365637&t=1704976144&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 17,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 1.024323465069756
+     }
+    },
+    {
+     "tokenId": 14,
+     "arweave": "01WUCcug0jNUiaZMqtMEfjHEFyD-JaOpRI7tKVR417k",
+     "query": "a=0x000000000000000000000000082daac1b2c74197d50341cbbeb9da7fc4a59930&c=42161&tid=14&h=0xc5cd0fd1a99076a95d502b9377ad09da9d893d5119d10a80df0063a54738b9be&bh=0xda7eda78fad7d20c63d70b05c043dc8cd02ae79508a66ae65c771799cff841f6&bn=169365637&t=1704976144&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 3.0361416623893827
+     }
+    }
+   ]
+  },
+  {
+   "dialect": "baglish",
+   "chain": "Base",
+   "chainId": 8453,
+   "contract": "0x5cdcb4d420c4bc244910b50a9874b2eb12890969",
+   "supply": 62,
+   "tokens": [
+    {
+     "tokenId": 1,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=1&h=0x5d10303af76dc5700cdafe84fa8e1d49c6c764804931ea40c9329e48075ffbb7&bh=0x8f9d78779e0b7d3fdc872881a77497061ff4f50f26669b517ff6e9579191ca3d&bn=8915913&t=1704621173&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 1.9406360476277769
+     }
+    },
+    {
+     "tokenId": 2,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=2&h=0x4c34ea153c5a575bc2aad48ecd601a394431f2156903d2a5db04b91b538d6e40&bh=0x7d95837dbf6b0377f5c8180cf69eedb3a672630a93235fdb5ae3388372ccf015&bn=9000843&t=1704791033&wa=0x5adfe61ed32956820cee996023467cfcfb932e06&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 2.1807778043027186
+     }
+    },
+    {
+     "tokenId": 3,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=3&h=0x63e37596301fd296a57166abfb2ea2ffa9ecdb58dea40542ef8471679f13b450&bh=0x1acb89807aef02a7e83d730019bf9cb8eaeef23b5e8249b11728a8ff2569fa79&bn=9019447&t=1704828241&wa=0x33fc2be5563e3c02a3e127f01bbd71db472aa613&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 13,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 1.8871889693352084
+     }
+    },
+    {
+     "tokenId": 4,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=4&h=0x63e37596301fd296a57166abfb2ea2ffa9ecdb58dea40542ef8471679f13b450&bh=0x1acb89807aef02a7e83d730019bf9cb8eaeef23b5e8249b11728a8ff2569fa79&bn=9019447&t=1704828241&wa=0x33fc2be5563e3c02a3e127f01bbd71db472aa613&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 20,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 2.7793378923504966
+     }
+    },
+    {
+     "tokenId": 5,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=5&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 2.022348053961249
+     }
+    },
+    {
+     "tokenId": 6,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=6&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 12,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 1.7326175953882434
+     }
+    },
+    {
+     "tokenId": 7,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=7&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 18,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.496222190093249
+     }
+    },
+    {
+     "tokenId": 8,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=8&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 0.3540367245053252
+     }
+    },
+    {
+     "tokenId": 9,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=9&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 8,
+      "sonority": 28,
+      "melodyLength": 3,
+      "border": "double",
+      "pleasantness": 3.1673757001091616
+     }
+    },
+    {
+     "tokenId": 10,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=10&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=6&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 1.5689774913092454
+     }
+    },
+    {
+     "tokenId": 11,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=11&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=7&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 2.9781782876503566
+     }
+    },
+    {
+     "tokenId": 12,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=12&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=8&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 19,
+      "melodyLength": 3,
+      "border": "outset",
+      "pleasantness": 2.882213312201202
+     }
+    },
+    {
+     "tokenId": 13,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=13&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=9&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 14,
+      "melodyLength": 8,
+      "border": "dotted",
+      "pleasantness": 0.9778914725563178
+     }
+    },
+    {
+     "tokenId": 14,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=14&h=0xfcb31b13c9a797328c44bb96157ec44b3f123fcc9089779880b6732435f315fd&bh=0xcf71044405f7299c24f26c31f5e65d2c3a89c9732ecf1b2685d77194138ac6d4&bn=9019659&t=1704828665&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=10&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 19,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 3.942428756316315
+     }
+    },
+    {
+     "tokenId": 15,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=15&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 6,
+      "sonority": 22,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 3.860971515842155
+     }
+    },
+    {
+     "tokenId": 16,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=16&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 9,
+      "melodyLength": 3,
+      "border": "outset",
+      "pleasantness": 1.2724555598106235
+     }
+    },
+    {
+     "tokenId": 17,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=17&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 13,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.2677523549180185
+     }
+    },
+    {
+     "tokenId": 18,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=18&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 15,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 1.993543770222459
+     }
+    },
+    {
+     "tokenId": 19,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=19&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 20,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 0.9504213745240122
+     }
+    },
+    {
+     "tokenId": 20,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=20&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=6&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 2.039961385268299
+     }
+    },
+    {
+     "tokenId": 21,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=21&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=7&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 12,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 1.7469721181939044
+     }
+    },
+    {
+     "tokenId": 22,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=22&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=8&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 2.383734769498308
+     }
+    },
+    {
+     "tokenId": 23,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=23&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=9&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 1.6437325773877092
+     }
+    },
+    {
+     "tokenId": 24,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=24&h=0x8be865950750d0f85bfa5db82660c5ac266109b30fd576485ad9915261482195&bh=0x5345fc9b927e793e22f491a61801324c2f13956eda40b9499be1fc17ae7d3b9f&bn=9065565&t=1704920477&wa=0x45698cdcc733cba4f8b1150c2f580587adf1df92&ms=10&mi=10&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 15,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 1.6774728999340505
+     }
+    },
+    {
+     "tokenId": 25,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=25&h=0x86a0fb242dffc6370c4645f8b24496d9e7e320f9da866872c4f93b94a36c2ced&bh=0x7c42e2ff684d06aaaea06e4b7bf6fae3b68114be3ecb9556f3f437db7156edb1&bn=9068157&t=1704925661&wa=0x487c6480c33f32435f99cfa4b1e09c0d4e4165f7&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 9,
+      "sonority": 25,
+      "melodyLength": 2,
+      "border": "dotted",
+      "pleasantness": 0.1568788762740248
+     }
+    },
+    {
+     "tokenId": 26,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=26&h=0x86a0fb242dffc6370c4645f8b24496d9e7e320f9da866872c4f93b94a36c2ced&bh=0x7c42e2ff684d06aaaea06e4b7bf6fae3b68114be3ecb9556f3f437db7156edb1&bn=9068157&t=1704925661&wa=0x487c6480c33f32435f99cfa4b1e09c0d4e4165f7&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 15,
+      "melodyLength": 8,
+      "border": "outset",
+      "pleasantness": 1.7225302251916133
+     }
+    },
+    {
+     "tokenId": 27,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=27&h=0xda768af4c3cc412486f60f1d87a2ac0f65ec935332b1d7122f32c7a9920444e9&bh=0x85e0c6ba20e489639a9e614473e8ec6b34e147f301542490d818e603fcf1577e&bn=9073093&t=1704935533&wa=0xa8c7372dc993d7510c9c45425807d463967cbb12&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 1.7399393965606578
+     }
+    },
+    {
+     "tokenId": 28,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=28&h=0x6f18f8e8ceb8bbbeda32466a402d8fdf60d9639839b4a569b7328e09c048cf38&bh=0x70b52e557d27adb3be48f9dde444e31bf0653a9ea43444812857b32509ded9e4&bn=9084863&t=1704959073&wa=0x56c09caf7a77d5d254dae3438bb843a1ffd06aa2&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 6,
+      "sonority": 21,
+      "melodyLength": 8,
+      "border": "double",
+      "pleasantness": 2.98874060417888
+     }
+    },
+    {
+     "tokenId": 29,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=29&h=0x6f18f8e8ceb8bbbeda32466a402d8fdf60d9639839b4a569b7328e09c048cf38&bh=0x70b52e557d27adb3be48f9dde444e31bf0653a9ea43444812857b32509ded9e4&bn=9084863&t=1704959073&wa=0x56c09caf7a77d5d254dae3438bb843a1ffd06aa2&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 1.4210077066284914
+     }
+    },
+    {
+     "tokenId": 30,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=30&h=0xb0c5d2bed2fda620ed976928736a3bb7cc05d4fb0d422f176af043d171c9f2ad&bh=0xe25cf50d8c6a988a3ec42c14aca06bbea1315213b8f18070e1156139dab392dc&bn=9093515&t=1704976377&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 2.2639494243776426
+     }
+    },
+    {
+     "tokenId": 31,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=31&h=0xec724928b26c43040974842d4f0d11d88f3a6c0e7b5c68e190dde09e866183f9&bh=0xdcd90ef063f03e0262b73f9df48268427b2dc5acee56ef768e3913cb5afcc760&bn=9136584&t=1705062515&wa=0xeefbdae2b62f9a1639bcba81a7e76e84b2c6813b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 11,
+      "melodyLength": 8,
+      "border": "inset",
+      "pleasantness": 2.554606163253387
+     }
+    },
+    {
+     "tokenId": 32,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=32&h=0xa529f2fa39ed38e7bc883c557fcb8c49a297ffd8950a7d15316035e05c7367a5&bh=0xa50e5030ae67b172aa31d183c377cec694a0679df78d8d5bae793c1b1b0d7355&bn=9241328&t=1705272003&wa=0x6a7415b36133c6c3957e4772b8009068e170c648&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 18,
+      "melodyLength": 8,
+      "border": "solid",
+      "pleasantness": 2.171413946663961
+     }
+    },
+    {
+     "tokenId": 33,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=33&h=0xa529f2fa39ed38e7bc883c557fcb8c49a297ffd8950a7d15316035e05c7367a5&bh=0xa50e5030ae67b172aa31d183c377cec694a0679df78d8d5bae793c1b1b0d7355&bn=9241328&t=1705272003&wa=0x6a7415b36133c6c3957e4772b8009068e170c648&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 20,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.8801474908774003
+     }
+    },
+    {
+     "tokenId": 34,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=34&h=0xb8e118555d983663cbaf38a25ebb77e1fecc560664861f947d909e8292258c85&bh=0xfe30da238cbc4cd8799467cbfa0aabb9a7cbcd379a655f8fad0f4101b8d7898d&bn=9243395&t=1705276137&wa=0x5adfe61ed32956820cee996023467cfcfb932e06&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 3.3864774973286935
+     }
+    },
+    {
+     "tokenId": 35,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=35&h=0xb8e118555d983663cbaf38a25ebb77e1fecc560664861f947d909e8292258c85&bh=0xfe30da238cbc4cd8799467cbfa0aabb9a7cbcd379a655f8fad0f4101b8d7898d&bn=9243395&t=1705276137&wa=0x5adfe61ed32956820cee996023467cfcfb932e06&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 1.2066866385284811
+     }
+    },
+    {
+     "tokenId": 36,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=36&h=0x0ffcf9c2134b5d88f0098847426db55dad1f938ff114630457343f0cd46941cf&bh=0x0002de4a084e7bbef4b3dfb9c23dc12347718029fec7c40602761ea315f4067a&bn=9247376&t=1705284099&wa=0x24a68c123283814bde44c16f0f1dd58a03621fb3&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 15,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 1.6232180339866318
+     }
+    },
+    {
+     "tokenId": 37,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=37&h=0x0ffcf9c2134b5d88f0098847426db55dad1f938ff114630457343f0cd46941cf&bh=0x0002de4a084e7bbef4b3dfb9c23dc12347718029fec7c40602761ea315f4067a&bn=9247376&t=1705284099&wa=0x24a68c123283814bde44c16f0f1dd58a03621fb3&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 21,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 2.9119828746654095
+     }
+    },
+    {
+     "tokenId": 38,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=38&h=0x4515688075b47fb171dd7ca505d64d92ef322ddc8d4e014091a0dc317b303b20&bh=0x818ed61380666ec78b16a133122bcd7f694a125c88fd3364bcabe66c50d8cff4&bn=9277661&t=1705344669&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 1.808694232410441
+     }
+    },
+    {
+     "tokenId": 39,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=39&h=0x094d6a1d4e54d600a2ab252974d4953fdf6273137f85d25bab8e05c72f62f02b&bh=0xdef2437b603accda294e0bdc1a47d8268d542455d40964bf5316b18ce482ecee&bn=9285558&t=1705360463&wa=0x5da68351bd082abda73e42ac981db51d9364fe69&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 1.3514605679083616
+     }
+    },
+    {
+     "tokenId": 40,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=40&h=0xac77d7a9b04181922e1e44d0445842cfe579fc4d072588c1fd6150b2c39bc960&bh=0x5daf72f9c90872fcad52f96f05e6910a9de029f3ded2a2b29b504f4a1e8a22c8&bn=9317476&t=1705424299&wa=0xa3eac0016f6581ac34768c0d4b99ddcd88071c3c&ms=3&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 9,
+      "sonority": 26,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 3.968661225853076
+     }
+    },
+    {
+     "tokenId": 41,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=41&h=0xac77d7a9b04181922e1e44d0445842cfe579fc4d072588c1fd6150b2c39bc960&bh=0x5daf72f9c90872fcad52f96f05e6910a9de029f3ded2a2b29b504f4a1e8a22c8&bn=9317476&t=1705424299&wa=0xa3eac0016f6581ac34768c0d4b99ddcd88071c3c&ms=3&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 13,
+      "melodyLength": 2,
+      "border": "outset",
+      "pleasantness": 2.70124455075711
+     }
+    },
+    {
+     "tokenId": 42,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=42&h=0xac77d7a9b04181922e1e44d0445842cfe579fc4d072588c1fd6150b2c39bc960&bh=0x5daf72f9c90872fcad52f96f05e6910a9de029f3ded2a2b29b504f4a1e8a22c8&bn=9317476&t=1705424299&wa=0xa3eac0016f6581ac34768c0d4b99ddcd88071c3c&ms=3&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 9,
+      "melodyLength": 3,
+      "border": "outset",
+      "pleasantness": 0.5380512700260928
+     }
+    },
+    {
+     "tokenId": 43,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=43&h=0xcf52345d2bfc27a554d48afd50006e6ce27cb4168f8c23a90c86ef359b297bc5&bh=0xb8369005567e229c48f2df48b0e107c5a12866326534ae66adf446e30d5b17f9&bn=9401718&t=1705592783&wa=0x365c231a37e1de128e62cf173923a7fbae785860&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 19,
+      "melodyLength": 3,
+      "border": "outset",
+      "pleasantness": 2.5974717965582386
+     }
+    },
+    {
+     "tokenId": 44,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=44&h=0x2d9db563d8b5b7d4a3585d64f6e4d24e519ad8d1f9cb4ba1e9e9d91f6d11975b&bh=0xca0f60b715b8868c7fbb348df896a5e146c4aacf7fc6eea1c06590bbb3b79c4b&bn=9414756&t=1705618859&wa=0xdd3bf199e65bba74144a9a1c0dfaeda32b911121&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 2.104144429671578
+     }
+    },
+    {
+     "tokenId": 45,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=45&h=0xfd46a93bf083474a5ee3a941f34e93c32721873243aba623cb0ce0c683bdc5c7&bh=0x85dfb5cbb9a009dde04146c4c585863cbccdd5fc73eb727e1f7c2ddcce27f6f5&bn=9669328&t=1706128003&wa=0x98d64146118756a877fac6930630f1ef2dffa6f7&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 7,
+      "sonority": 25,
+      "melodyLength": 2,
+      "border": "groove",
+      "pleasantness": 2.434880758414919
+     }
+    },
+    {
+     "tokenId": 46,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=46&h=0xa4d7a06152d19d27fa3475ff85553716e946c475f0e640a4762890b2b834e626&bh=0xcf81b825670dafedbe62e6ea6ef128a63ea6b2b9274034a8286a65b8489223d6&bn=9669339&t=1706128025&wa=0x28e1bddc18aa171bf9fee8442e786b9dce8cfdad&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 3.196119261735907
+     }
+    },
+    {
+     "tokenId": 47,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=47&h=0xa4d7a06152d19d27fa3475ff85553716e946c475f0e640a4762890b2b834e626&bh=0xcf81b825670dafedbe62e6ea6ef128a63ea6b2b9274034a8286a65b8489223d6&bn=9669339&t=1706128025&wa=0x28e1bddc18aa171bf9fee8442e786b9dce8cfdad&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 14,
+      "melodyLength": 2,
+      "border": "outset",
+      "pleasantness": 1.5239471904933453
+     }
+    },
+    {
+     "tokenId": 48,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=48&h=0x08a729e3da15dd798123203480f53f67f8913ac4b8d5e305aa567aac0f201186&bh=0xc4edd6142cdbc5b1f3a640d4c970f7e4f8790e682438bb30906bf12206fd2ea3&bn=9669401&t=1706128149&wa=0x98d64146118756a877fac6930630f1ef2dffa6f7&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 1.2486770165463288
+     }
+    },
+    {
+     "tokenId": 49,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=49&h=0x29959a324b917d422c1c82a240200417f539296012a75814699dd79974c21f34&bh=0x163b8a1194928548e1fede962e503a322e3570f6e469c700e2d056b610b92eb1&bn=9669677&t=1706128701&wa=0xf73c935815908ad9a056fc50269f95d8ba032e9d&ms=5&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 17,
+      "melodyLength": 2,
+      "border": "solid",
+      "pleasantness": 1.6145806075073779
+     }
+    },
+    {
+     "tokenId": 50,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=50&h=0x29959a324b917d422c1c82a240200417f539296012a75814699dd79974c21f34&bh=0x163b8a1194928548e1fede962e503a322e3570f6e469c700e2d056b610b92eb1&bn=9669677&t=1706128701&wa=0xf73c935815908ad9a056fc50269f95d8ba032e9d&ms=5&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 13,
+      "melodyLength": 2,
+      "border": "inset",
+      "pleasantness": 1.958014159463346
+     }
+    },
+    {
+     "tokenId": 51,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=51&h=0x29959a324b917d422c1c82a240200417f539296012a75814699dd79974c21f34&bh=0x163b8a1194928548e1fede962e503a322e3570f6e469c700e2d056b610b92eb1&bn=9669677&t=1706128701&wa=0xf73c935815908ad9a056fc50269f95d8ba032e9d&ms=5&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 19,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.7474751662928611
+     }
+    },
+    {
+     "tokenId": 52,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=52&h=0x29959a324b917d422c1c82a240200417f539296012a75814699dd79974c21f34&bh=0x163b8a1194928548e1fede962e503a322e3570f6e469c700e2d056b610b92eb1&bn=9669677&t=1706128701&wa=0xf73c935815908ad9a056fc50269f95d8ba032e9d&ms=5&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 0.612295042257756
+     }
+    },
+    {
+     "tokenId": 53,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=53&h=0x29959a324b917d422c1c82a240200417f539296012a75814699dd79974c21f34&bh=0x163b8a1194928548e1fede962e503a322e3570f6e469c700e2d056b610b92eb1&bn=9669677&t=1706128701&wa=0xf73c935815908ad9a056fc50269f95d8ba032e9d&ms=5&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 8,
+      "sonority": 18,
+      "melodyLength": 2,
+      "border": "dotted",
+      "pleasantness": 0.8360726706450805
+     }
+    },
+    {
+     "tokenId": 54,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=54&h=0x5c6ba41b2fcc28b03a1787ad76ae9a764a279a3af7482bcaa78d3986b78add36&bh=0x7263750f2be5aedd74e49a489069b21db2bf719e3510b2354fea59fb79da3ba0&bn=9679266&t=1706147879&wa=0x51603c7059f369ab04b16addfb7bb6c4e34b8523&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 15,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.8841557280393317
+     }
+    },
+    {
+     "tokenId": 55,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=55&h=0x5c6ba41b2fcc28b03a1787ad76ae9a764a279a3af7482bcaa78d3986b78add36&bh=0x7263750f2be5aedd74e49a489069b21db2bf719e3510b2354fea59fb79da3ba0&bn=9679266&t=1706147879&wa=0x51603c7059f369ab04b16addfb7bb6c4e34b8523&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 20,
+      "melodyLength": 2,
+      "border": "double",
+      "pleasantness": 1.4062642318225396
+     }
+    },
+    {
+     "tokenId": 56,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=56&h=0xe87c86a92abf121b3bab5c5d048154cebce4ba2531ec65c85208a937f87c9c7b&bh=0xea86d38c07f753b5d198c31655b7efaf24456e19b9cde2c68cafb2c3c61f1b7d&bn=9842530&t=1706474407&wa=0x5881d9bfff787c8655a9b7f3484ae1a6f7a966e8&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 1.477652836823836
+     }
+    },
+    {
+     "tokenId": 57,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=57&h=0xcfa4c309efbf50e0552a0be4617bdc14f089304eeb6330e3373a6b0e6810e40b&bh=0xbca3e920cf1c61e3569df0171861f28a7c6884f03486b7cc7f2aee2e0c5c1dbb&bn=9864936&t=1706519219&wa=0xc7369b9c441cd9186a8729315b1a432547c768a2&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 8,
+      "border": "ridge",
+      "pleasantness": 0.18835591682000086
+     }
+    },
+    {
+     "tokenId": 58,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=58&h=0xe5ec708d39eebbde40f46980974f6e541b368b51d7293030f0e77a0e666fcfa6&bh=0xc7934a383212c998c72bf81a7f286b3ffbc8638bf52213296ec3d5876ea981f6&bn=9865118&t=1706519583&wa=0xc7369b9c441cd9186a8729315b1a432547c768a2&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 15,
+      "melodyLength": 8,
+      "border": "dotted",
+      "pleasantness": 1.9530340409837663
+     }
+    },
+    {
+     "tokenId": 59,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=59&h=0x2bead5477cb782bdc740b3292166656caba7d6d1fcd63b19fb596f46807df86d&bh=0xd5e633feb4c5c97a88e76002926d6d7f9dcb12d17c1d0d9ec37b67102881357d&bn=9887973&t=1706565293&wa=0x9b559d0808690df5541cf30afd357c0c5c420a92&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 9,
+      "melodyLength": 8,
+      "border": "outset",
+      "pleasantness": 1.0452758334577084
+     }
+    },
+    {
+     "tokenId": 60,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x0000000000000000000000005cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=60&h=0x46655725b73bf7e56b8a30de15972b31f0ffd1bbee906ba4bddeab02d397e894&bh=0xa232591069aed89a9af1aa157bd2b8695a3e29eed86715d400488e0d991deb67&bn=9899994&t=1706589335&wa=0x3a06bdcad90aebee845b08f28b3995e9b5373a2d&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "outset",
+      "pleasantness": 2.0324664029542348
+     }
+    },
+    {
+     "tokenId": 61,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x5cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=61&h=0x06f671701deae70903a8c7b28e6981cebdf5d847cb3fbc68f3fbd3817a8c7853&bh=0x63c1db7839c62b157cd24f8437055bdfa61d2dfcf1bf5df5c8e5d83acc93d18c&bn=19475449&t=1725740245&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 2,
+      "sonority": 8,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 1.8421682781153543
+     }
+    },
+    {
+     "tokenId": 62,
+     "arweave": "GntTG0Ht890gCsTxjvxI1xYhVjZIJD4NMEtBY-6d16I",
+     "query": "a=0x5cdcb4d420c4bc244910b50a9874b2eb12890969&c=8453&tid=62&h=0x06f671701deae70903a8c7b28e6981cebdf5d847cb3fbc68f3fbd3817a8c7853&bh=0x63c1db7839c62b157cd24f8437055bdfa61d2dfcf1bf5df5c8e5d83acc93d18c&bn=19475449&t=1725740245&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 0.5209620877285488
+     }
+    }
+   ]
+  },
+  {
+   "dialect": "optiglish",
+   "chain": "Optimism",
+   "chainId": 10,
+   "contract": "0x35f93761726c142d759053adf9d4eecf6a0f7429",
+   "supply": 32,
+   "tokens": [
+    {
+     "tokenId": 1,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=1&h=0x5c591f2e5c5b7a4f7ec72db3e6ea8a7e61765d069790e60f87e35817d97b23ad&bh=0x6ce9db4044852c34add61daafd48fdf1d9253a0e54601fa17645c54a35829150&bn=114511223&t=1704621223&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 5,
+      "sonority": 20,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 2.604960153115984
+     }
+    },
+    {
+     "tokenId": 2,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=2&h=0xc29ec86484215b7f41b12492b7ce75f125a1dc5aa199c192b1dfa6c059144f76&bh=0xf46b719ace420a70190a6c3fe086a22d0e23c91e9fd9d72cef2630604bf127f9&bn=114512991&t=1704624759&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 13,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 0.48318289546296
+     }
+    },
+    {
+     "tokenId": 3,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=3&h=0xc29ec86484215b7f41b12492b7ce75f125a1dc5aa199c192b1dfa6c059144f76&bh=0xf46b719ace420a70190a6c3fe086a22d0e23c91e9fd9d72cef2630604bf127f9&bn=114512991&t=1704624759&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 12,
+      "sonority": 32,
+      "melodyLength": 8,
+      "border": "dotted",
+      "pleasantness": 3.1288547398452957
+     }
+    },
+    {
+     "tokenId": 4,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=4&h=0xc29ec86484215b7f41b12492b7ce75f125a1dc5aa199c192b1dfa6c059144f76&bh=0xf46b719ace420a70190a6c3fe086a22d0e23c91e9fd9d72cef2630604bf127f9&bn=114512991&t=1704624759&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 1,
+      "sonority": 7,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 4.983272206997604
+     }
+    },
+    {
+     "tokenId": 5,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=5&h=0xc29ec86484215b7f41b12492b7ce75f125a1dc5aa199c192b1dfa6c059144f76&bh=0xf46b719ace420a70190a6c3fe086a22d0e23c91e9fd9d72cef2630604bf127f9&bn=114512991&t=1704624759&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 19,
+      "melodyLength": 3,
+      "border": "double",
+      "pleasantness": 3.0790733213466552
+     }
+    },
+    {
+     "tokenId": 6,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=6&h=0xc29ec86484215b7f41b12492b7ce75f125a1dc5aa199c192b1dfa6c059144f76&bh=0xf46b719ace420a70190a6c3fe086a22d0e23c91e9fd9d72cef2630604bf127f9&bn=114512991&t=1704624759&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=5&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "groove",
+      "pleasantness": 0.80405576643534
+     }
+    },
+    {
+     "tokenId": 7,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=7&h=0x18d4c4b67222e8e8e4c2ca7b0df7ae2c8418fa966e9c298ae09178636acdb2da&bh=0xb895325a5cdbb859884364fc8f3165b56f249804661717db014e859c833d2685&bn=114520839&t=1704640455&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 9,
+      "melodyLength": 3,
+      "border": "groove",
+      "pleasantness": 1.321435033576563
+     }
+    },
+    {
+     "tokenId": 8,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=8&h=0x72355bdd271a55e4a85551e70db15a0cbf57986f18365587e1c6e8242c8f7cc7&bh=0x4d66ac38b0e33f494d20ab84b7ad4a25898ccb999eefbc7221dc7465d34b0d5e&bn=114520854&t=1704640485&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 19,
+      "melodyLength": 4,
+      "border": "inset",
+      "pleasantness": 3.1563089796506323
+     }
+    },
+    {
+     "tokenId": 9,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=9&h=0x9475d6f5ee0047f7e3292c967598df203aed598d0415db10709736ff358d610e&bh=0xf366add5340aeee02654fbfeb437196691ad246bf9fbd55fdfdbafd29d288f9e&bn=114657450&t=1704913677&wa=0x487c6480c33f32435f99cfa4b1e09c0d4e4165f7&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 1,
+      "sonority": 7,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 4.941864698426798
+     }
+    },
+    {
+     "tokenId": 10,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=10&h=0x9475d6f5ee0047f7e3292c967598df203aed598d0415db10709736ff358d610e&bh=0xf366add5340aeee02654fbfeb437196691ad246bf9fbd55fdfdbafd29d288f9e&bn=114657450&t=1704913677&wa=0x487c6480c33f32435f99cfa4b1e09c0d4e4165f7&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 7,
+      "sonority": 21,
+      "melodyLength": 3,
+      "border": "groove",
+      "pleasantness": 2.303570316041283
+     }
+    },
+    {
+     "tokenId": 11,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=11&h=0x0348f878d0ffaaec47b9bce3451df309583295c7d645660964eed2ca4474a5a3&bh=0xd4a34421fe93b9489a78938f7bb58721f09ab023cc6bedbde99927aa07a1d54a&bn=114663069&t=1704924915&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 14,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 1.8539645552932047
+     }
+    },
+    {
+     "tokenId": 12,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=12&h=0xcc13f156f28da92dcd8be66fafa19bf89784003821048af618f9930b05f8f8b6&bh=0xc8a01565fa60de1942d91e90a0d1e4f188ed60f595dd5dd3fbd70ccd4a6387a4&bn=114663353&t=1704925483&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 18,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 1.2484269554261118
+     }
+    },
+    {
+     "tokenId": 13,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=13&h=0xa838122acc70274daf12571f802c158d2ffbab222aa756254c4c1a6e87ce3182&bh=0xe04b4f86e9952e893ebbc81b4b0b4573cc1d26b9281f3a03ce82a3335db51d11&bn=114663379&t=1704925535&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 12,
+      "melodyLength": 2,
+      "border": "groove",
+      "pleasantness": 1.1421445398014083
+     }
+    },
+    {
+     "tokenId": 14,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=14&h=0x720a7fc1af34c1cca86872b7f3301641952009c10ba0cfad26d74a54a57bf4e7&bh=0x50b496c3e75b17d56388a2cf93a13f7164c58989da592cd5d974a96aaf761f7c&bn=114663424&t=1704925625&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 12,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 0.2627432856243104
+     }
+    },
+    {
+     "tokenId": 15,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=15&h=0x474afb48a7a34818ec1ba1b79a526bb4ba9d6888f9ccf67dcc86b6ed6c1a7437&bh=0x30327bad0c6b43cdec35340b8c0d3f0dc98ac168fe9a924039c9c4d86c779c5d&bn=114663500&t=1704925777&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 1.404307197779417
+     }
+    },
+    {
+     "tokenId": 16,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=16&h=0x4e55bcc4160ae78b50a9ba52232f90a8efebeec2352e0e365e4acd2e3a594134&bh=0xef8725b4fbfbc286c42c2fd65e39b42cca427c8a7124d16f8e5ea38971ac6d1f&bn=114663531&t=1704925839&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 20,
+      "melodyLength": 3,
+      "border": "dashed",
+      "pleasantness": 2.107390217669308
+     }
+    },
+    {
+     "tokenId": 17,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=17&h=0x7c1bd947816542aef2e620e5e8ee9babcb43eab7794bdd4bbbe81eaedb34eab7&bh=0xf30056a556645d446c731dbbfaf52822fc86fbf9cb609d7a070b43b43538d774&bn=114731811&t=1705062399&wa=0xeefbdae2b62f9a1639bcba81a7e76e84b2c6813b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 9,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 2.2753173136152327
+     }
+    },
+    {
+     "tokenId": 18,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=18&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 12,
+      "melodyLength": 3,
+      "border": "dashed",
+      "pleasantness": 0.4822808860735412
+     }
+    },
+    {
+     "tokenId": 19,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=19&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 12,
+      "melodyLength": 8,
+      "border": "inset",
+      "pleasantness": 1.0152246365323663
+     }
+    },
+    {
+     "tokenId": 20,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=20&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 8,
+      "border": "double",
+      "pleasantness": 0.9991894757947641
+     }
+    },
+    {
+     "tokenId": 21,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=21&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 15,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 3.4629048476150883
+     }
+    },
+    {
+     "tokenId": 22,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=22&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 2.7319866768084466
+     }
+    },
+    {
+     "tokenId": 23,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=23&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=6&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 2.502069134498015
+     }
+    },
+    {
+     "tokenId": 24,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=24&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=7&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 8,
+      "sonority": 19,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 2.5714844311275007
+     }
+    },
+    {
+     "tokenId": 25,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=25&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=8&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 12,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 2.7392702892733114
+     }
+    },
+    {
+     "tokenId": 26,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x00000000000000000000000035f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=26&h=0x8c759bd82aa2f80b51844fd7e12ed3a35177dad5b705a54f117ba2f17038a26e&bh=0x37f046e3a88fbca6037fc862f7a1d6aec7ada9be1c702069d0f3145e39009318&bn=114873330&t=1705345437&wa=0xfdea65c8e26263f6d9a1b5de9555d2931a33b825&ms=9&mi=9&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 16,
+      "border": "double",
+      "pleasantness": 1.9848335766388723
+     }
+    },
+    {
+     "tokenId": 27,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x35f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=27&h=0x2075fcb7cbc851c12ed8f222f4231cf10903a8df080538424ba579b288ef8558&bh=0x31a3d296dd3680e94537a6ac4ca6f017e8cba3160b1e8a107abfe48aea1926b4&bn=117496073&t=1710590923&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=4&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 15,
+      "melodyLength": 8,
+      "border": "inset",
+      "pleasantness": 0.6948278944473714
+     }
+    },
+    {
+     "tokenId": 28,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x35f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=28&h=0x2075fcb7cbc851c12ed8f222f4231cf10903a8df080538424ba579b288ef8558&bh=0x31a3d296dd3680e94537a6ac4ca6f017e8cba3160b1e8a107abfe48aea1926b4&bn=117496073&t=1710590923&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=4&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 2.771007310715504
+     }
+    },
+    {
+     "tokenId": 29,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x35f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=29&h=0x2075fcb7cbc851c12ed8f222f4231cf10903a8df080538424ba579b288ef8558&bh=0x31a3d296dd3680e94537a6ac4ca6f017e8cba3160b1e8a107abfe48aea1926b4&bn=117496073&t=1710590923&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=4&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 8,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 2.1587988543789836
+     }
+    },
+    {
+     "tokenId": 30,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x35f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=30&h=0x2075fcb7cbc851c12ed8f222f4231cf10903a8df080538424ba579b288ef8558&bh=0x31a3d296dd3680e94537a6ac4ca6f017e8cba3160b1e8a107abfe48aea1926b4&bn=117496073&t=1710590923&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=4&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 2.0830776029421636
+     }
+    },
+    {
+     "tokenId": 31,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x35f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=31&h=0xd3821b5996bb36fc2b1d267bf0c0542a12a39151d165da9e572fa1d59b3fd7ad&bh=0x0420eeaf69c3ff5c490fae5d105df9b720321d803d0cc37f627010bf317e38a7&bn=117509598&t=1710617973&wa=0xf70da97812cb96acdf810712aa562db8dfa3dbef&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 19,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 4.171758802141994
+     }
+    },
+    {
+     "tokenId": 32,
+     "arweave": "quSXxFIB_a5wxHNJSCopfHS_jOSPPPylP5r3NfBk3YU",
+     "query": "a=0x35f93761726c142d759053adf9d4eecf6a0f7429&c=10&tid=32&h=0xd3821b5996bb36fc2b1d267bf0c0542a12a39151d165da9e572fa1d59b3fd7ad&bh=0x0420eeaf69c3ff5c490fae5d105df9b720321d803d0cc37f627010bf317e38a7&bn=117509598&t=1710617973&wa=0xf70da97812cb96acdf810712aa562db8dfa3dbef&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 1,
+      "sonority": 7,
+      "melodyLength": 2,
+      "border": "inset",
+      "pleasantness": 4.741417590651918
+     }
+    }
+   ]
+  },
+  {
+   "dialect": "zorglish",
+   "chain": "Zora",
+   "chainId": 7777777,
+   "contract": "0xa62fb8b864e14b53e47bee2c612f4408512d3858",
+   "supply": 46,
+   "tokens": [
+    {
+     "tokenId": 1,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=1&h=0xb361d2a0c4f17b293c817d54edd75639096eaf741171f6b07226ab094724c17c&bh=0x0b17ee5c95d4619af50b80033c778f92ca564cefcef66768bced96c81dd09f6a&bn=8963545&t=1704620929&wa=0x76963ee4c482fa4f9e125ea3c9cc2ea81fe8e8c6&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 1.4631413399086644
+     }
+    },
+    {
+     "tokenId": 2,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=2&h=0xac4f57fea1b98711c48e85c08868cd4246675d2a259fc4a949dde8ba55434aed&bh=0x3ae01873559d06bcb66c4c38664824ff1acbd683dd7225d464b27ad701cde79b&bn=8965659&t=1704625157&wa=0x503a04d04e00d9b0c0898e2d7a16b857be6cdaf0&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 13,
+      "melodyLength": 3,
+      "border": "double",
+      "pleasantness": 1.772875003516674
+     }
+    },
+    {
+     "tokenId": 3,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=3&h=0x33cf485e2e8e0999a4573292c9a40fca149cf8eefbccb00b9d95257fa60e67f3&bh=0xf6f6c57be1dd49aab5047308d28aaec8e91f1fad66f6a0382ff45b87e90b6d8a&bn=9115579&t=1704924997&wa=0x3d94781511d2313a7bdff90a0575e83a0ee56e7b&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 13,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 2.76159156113863
+     }
+    },
+    {
+     "tokenId": 4,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=4&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 2.0222659322898835
+     }
+    },
+    {
+     "tokenId": 5,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=5&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 7,
+      "melodyLength": 2,
+      "border": "dotted",
+      "pleasantness": 4.378301341154067
+     }
+    },
+    {
+     "tokenId": 6,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=6&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 8,
+      "sonority": 19,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 1.3767879522119064
+     }
+    },
+    {
+     "tokenId": 7,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=7&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 16,
+      "melodyLength": 8,
+      "border": "ridge",
+      "pleasantness": 0.6539728182182756
+     }
+    },
+    {
+     "tokenId": 8,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=8&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 7,
+      "sonority": 29,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 1.8921506909115595
+     }
+    },
+    {
+     "tokenId": 9,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=9&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=6&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 3.0661504780873656
+     }
+    },
+    {
+     "tokenId": 10,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=10&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=7&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 0.2601541136391461
+     }
+    },
+    {
+     "tokenId": 11,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=11&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=8&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 20,
+      "melodyLength": 3,
+      "border": "double",
+      "pleasantness": 2.1215517853420773
+     }
+    },
+    {
+     "tokenId": 12,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=12&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=9&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "inset",
+      "pleasantness": 1.0615305590908974
+     }
+    },
+    {
+     "tokenId": 13,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=13&h=0xd7e3ee2774a984ece65152a60489dc0c617d0c61f9e30d704cda5a284b3aedb8&bh=0x62aadf26c4562a8415ab14fe73cdda951c4ac087c63bf142c96107e757aab7b1&bn=9164356&t=1705022551&wa=0x08ceb8bba685ee708c9c4c65576837cbe19b9dea&ms=10&mi=10&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "outset",
+      "pleasantness": 2.163319769781083
+     }
+    },
+    {
+     "tokenId": 14,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=14&h=0xe1a36d009fe19bb91e570f9819afa376cd76bcef745582c125b4534a61009e52&bh=0x503cfcdcd0442f1b518926422e18351f144f528fa513aa36bd08704492f1291e&bn=9179079&t=1705051997&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=3&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 14,
+      "melodyLength": 3,
+      "border": "dashed",
+      "pleasantness": 2.42416833321051
+     }
+    },
+    {
+     "tokenId": 15,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=15&h=0xe1a36d009fe19bb91e570f9819afa376cd76bcef745582c125b4534a61009e52&bh=0x503cfcdcd0442f1b518926422e18351f144f528fa513aa36bd08704492f1291e&bn=9179079&t=1705051997&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=3&mi=2&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 18,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 2.1154514288064092
+     }
+    },
+    {
+     "tokenId": 16,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=16&h=0xe1a36d009fe19bb91e570f9819afa376cd76bcef745582c125b4534a61009e52&bh=0x503cfcdcd0442f1b518926422e18351f144f528fa513aa36bd08704492f1291e&bn=9179079&t=1705051997&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=3&mi=3&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 20,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 1.834691295314599
+     }
+    },
+    {
+     "tokenId": 17,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=17&h=0x730d73329cce494d47aea6ac23d5575e6ead7f5ff12460c148676780b2119c52&bh=0x3d8936914a5a4150a627ee40c296ea2e489d5bf8f4b7dd2263f3d9e2fad07179&bn=9184248&t=1705062335&wa=0xeefbdae2b62f9a1639bcba81a7e76e84b2c6813b&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 19,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 0.005469715688377619
+     }
+    },
+    {
+     "tokenId": 18,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=18&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 2.5967133056838065
+     }
+    },
+    {
+     "tokenId": 19,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=19&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=2&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 13,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 0.8290217015892267
+     }
+    },
+    {
+     "tokenId": 20,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=20&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=3&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 8,
+      "sonority": 18,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 0.12810274958610535
+     }
+    },
+    {
+     "tokenId": 21,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=21&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=4&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 18,
+      "melodyLength": 2,
+      "border": "inset",
+      "pleasantness": 1.9518585294539657
+     }
+    },
+    {
+     "tokenId": 22,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=22&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=5&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 17,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 3.017925657099113
+     }
+    },
+    {
+     "tokenId": 23,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=23&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=6&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 0.45878287591040134
+     }
+    },
+    {
+     "tokenId": 24,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=24&h=0x7c456f2c7931358b9c46ea69a374302296153f3647de807b0c794c39ec66d54a&bh=0x450c67d77d2297aebbc1d48d7c7e134f880760a26323aa839f564004dfc403e8&bn=9185921&t=1705065681&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=7&mi=7&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 14,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 2.6406186188105494
+     }
+    },
+    {
+     "tokenId": 25,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=25&h=0x513e7b3356183279d1474f911b3a1db7b2484aa5ac389a6e225764913ecffa61&bh=0x3b59c7720e096d751c6d1795741980637f06ffa2f1059b4a35539d629a1f1493&bn=9186013&t=1705065865&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=3&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 15,
+      "melodyLength": 4,
+      "border": "dotted",
+      "pleasantness": 2.9867078900182
+     }
+    },
+    {
+     "tokenId": 26,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=26&h=0x513e7b3356183279d1474f911b3a1db7b2484aa5ac389a6e225764913ecffa61&bh=0x3b59c7720e096d751c6d1795741980637f06ffa2f1059b4a35539d629a1f1493&bn=9186013&t=1705065865&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=3&mi=2&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 1,
+      "sonority": 7,
+      "melodyLength": 4,
+      "border": "dashed",
+      "pleasantness": 2.8933895909184786
+     }
+    },
+    {
+     "tokenId": 27,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=27&h=0x513e7b3356183279d1474f911b3a1db7b2484aa5ac389a6e225764913ecffa61&bh=0x3b59c7720e096d751c6d1795741980637f06ffa2f1059b4a35539d629a1f1493&bn=9186013&t=1705065865&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=3&mi=3&gp=1&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 8,
+      "sonority": 20,
+      "melodyLength": 4,
+      "border": "groove",
+      "pleasantness": 1.8896502449046744
+     }
+    },
+    {
+     "tokenId": 28,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=28&h=0x44d57114b48b466c6bd82b22600d1a978f8537bbfaff2e6781677aa88ffa1fd8&bh=0x94ab4a46accfe5642a0fcd3fc9c1fb1c8456740f5723165c9264db211e09ea86&bn=9186138&t=1705066115&wa=0x6e31d9d4ed8ed93c2871ffb320f68b3cb4e81a25&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 1,
+      "sonority": 7,
+      "melodyLength": 2,
+      "border": "ridge",
+      "pleasantness": 4.018235578484628
+     }
+    },
+    {
+     "tokenId": 29,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=29&h=0x5e865556f21fb9798c189250a938a1c110a256744837da6ea98a6b91043c5ebd&bh=0x088be9c2ba91aef1a483008de51c933eb82b6882cea7e97df50ba29f9a517801&bn=9193390&t=1705080619&wa=0xff4160a2355b1fa42722cb63fa482e7061ee40e7&ms=5&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 4,
+      "sonority": 12,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 2.7575181003637383
+     }
+    },
+    {
+     "tokenId": 30,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=30&h=0x5e865556f21fb9798c189250a938a1c110a256744837da6ea98a6b91043c5ebd&bh=0x088be9c2ba91aef1a483008de51c933eb82b6882cea7e97df50ba29f9a517801&bn=9193390&t=1705080619&wa=0xff4160a2355b1fa42722cb63fa482e7061ee40e7&ms=5&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 1.7307091311668046
+     }
+    },
+    {
+     "tokenId": 31,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=31&h=0x5e865556f21fb9798c189250a938a1c110a256744837da6ea98a6b91043c5ebd&bh=0x088be9c2ba91aef1a483008de51c933eb82b6882cea7e97df50ba29f9a517801&bn=9193390&t=1705080619&wa=0xff4160a2355b1fa42722cb63fa482e7061ee40e7&ms=5&mi=3&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 7,
+      "sonority": 20,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 2.047985552595666
+     }
+    },
+    {
+     "tokenId": 32,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=32&h=0x5e865556f21fb9798c189250a938a1c110a256744837da6ea98a6b91043c5ebd&bh=0x088be9c2ba91aef1a483008de51c933eb82b6882cea7e97df50ba29f9a517801&bn=9193390&t=1705080619&wa=0xff4160a2355b1fa42722cb63fa482e7061ee40e7&ms=5&mi=4&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 6,
+      "sonority": 14,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 1.8444836910348386
+     }
+    },
+    {
+     "tokenId": 33,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=33&h=0x5e865556f21fb9798c189250a938a1c110a256744837da6ea98a6b91043c5ebd&bh=0x088be9c2ba91aef1a483008de51c933eb82b6882cea7e97df50ba29f9a517801&bn=9193390&t=1705080619&wa=0xff4160a2355b1fa42722cb63fa482e7061ee40e7&ms=5&mi=5&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 1,
+      "sonority": 7,
+      "melodyLength": 4,
+      "border": "solid",
+      "pleasantness": 6.209712668579111
+     }
+    },
+    {
+     "tokenId": 34,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=34&h=0x54c638a3f0e83bc536db6264929138fb6ff269653505b9c4eb7ffc362f1858d8&bh=0xa0777501277dc863a93e9db897992f8df93ead1c9656362a9e70a49d4b2b246c&bn=9586922&t=1705867683&wa=0xb5360d78643a0b0f39b4f32c629a2a920b74e3dc&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 16,
+      "melodyLength": 3,
+      "border": "dashed",
+      "pleasantness": 0.9411288115661591
+     }
+    },
+    {
+     "tokenId": 35,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=35&h=0xa92b51f157b8bfa74dc80c56a8ca6be7966fa88d286bcad54c1656b9d1651c83&bh=0xd2854bf320096dfc5b92252d47680e61ac60360c08faa37a08d400ffc0c0fc93&bn=9676116&t=1706046071&wa=0x0a040043620187e883f5d6d8d3aa9c8229bf3e02&ms=2&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 12,
+      "melodyLength": 2,
+      "border": "dotted",
+      "pleasantness": 0.9946580030373298
+     }
+    },
+    {
+     "tokenId": 36,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=36&h=0xa92b51f157b8bfa74dc80c56a8ca6be7966fa88d286bcad54c1656b9d1651c83&bh=0xd2854bf320096dfc5b92252d47680e61ac60360c08faa37a08d400ffc0c0fc93&bn=9676116&t=1706046071&wa=0x0a040043620187e883f5d6d8d3aa9c8229bf3e02&ms=2&mi=2&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 2,
+      "sonority": 7,
+      "melodyLength": 2,
+      "border": "double",
+      "pleasantness": 4.1558817849699405
+     }
+    },
+    {
+     "tokenId": 37,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=37&h=0x9046f7c7d27018c60a0b8e12c8fc14d08f6646fbd18ecee9cce2cf9aa64c6bf4&bh=0xcfa98de05bbed3aaf74b7fd93889f7b2efb6c4935a731482345142e937d1c57a&bn=9678996&t=1706051831&wa=0x65ca4f011426fc2ac02041fbac0d12707070ea35&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 5,
+      "sonority": 15,
+      "melodyLength": 3,
+      "border": "double",
+      "pleasantness": 1.058849882400338
+     }
+    },
+    {
+     "tokenId": 38,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=38&h=0x163f26e0fc040819e5d63c209b4cda8d4bf22674a1a792514824f89d38753c07&bh=0x4f83fc92c4b9ea2333016dab221c5a763876bdbb2eddb4083b08ee5977a21873&bn=9987268&t=1706668375&wa=0x6d526f6b4c86fbdc8e359e6bef4cd6a42acea2d7&ms=2&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 14,
+      "melodyLength": 3,
+      "border": "inset",
+      "pleasantness": 3.959508085856214
+     }
+    },
+    {
+     "tokenId": 39,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=39&h=0x163f26e0fc040819e5d63c209b4cda8d4bf22674a1a792514824f89d38753c07&bh=0x4f83fc92c4b9ea2333016dab221c5a763876bdbb2eddb4083b08ee5977a21873&bn=9987268&t=1706668375&wa=0x6d526f6b4c86fbdc8e359e6bef4cd6a42acea2d7&ms=2&mi=2&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 14,
+      "melodyLength": 3,
+      "border": "solid",
+      "pleasantness": 1.6493465948539474
+     }
+    },
+    {
+     "tokenId": 40,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=40&h=0x4bf5d8711f57a943f77a5c7e1256f27894d0fcaed253db18409dcf184011d333&bh=0xbb0de4e36dea71acc88445536eb93f5c1b644528d67fb08f3198f5d6242a3889&bn=10016371&t=1706726581&wa=0x4316c8275a46878837a0aae31e5741e6c0665d72&ms=1&mi=1&gp=1&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 8,
+      "sonority": 28,
+      "melodyLength": 3,
+      "border": "ridge",
+      "pleasantness": 2.977185004545997
+     }
+    },
+    {
+     "tokenId": 41,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=41&h=0x4337229bf123afa5ce7800812160a1e0859f8f430e0ad9ec9020b059c75174f0&bh=0xb784d4d8e33b4f255b5e73f3a23358ac459fbf5f78b23b2422694f6eed72e257&bn=10037044&t=1706767927&wa=0x5433fd150cbab820a3937255c9e68e290b8182ef&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 8,
+      "sonority": 25,
+      "melodyLength": 8,
+      "border": "outset",
+      "pleasantness": 0.9392972228285026
+     }
+    },
+    {
+     "tokenId": 42,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0x000000000000000000000000a62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=42&h=0x78b41705476f1c48064ccb7e9b51f134160240a7d6863fabb9bbbc00a2d2f2d8&bh=0xdd6f1510e9527e3e5ea004f35be130e4030d4b614bd5a1cc4f08a9269b9393fb&bn=10485495&t=1707664829&wa=0xd26b76e50f6510cdd4bf45d59279705f36946d23&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 3,
+      "complexity": 17,
+      "sonority": 55,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 3.219264921185111
+     }
+    },
+    {
+     "tokenId": 43,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0xa62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=43&h=0xb56c3fdf100b638ef9d80019de2cb05c4c83894b50cda4519fe7f05739dcfd9a&bh=0x02e3c959644d426177dd90ef01bf991eeefe307088df701968f33dda8b6a6a5f&bn=11925601&t=1710545041&wa=0xf70da97812cb96acdf810712aa562db8dfa3dbef&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 11,
+      "sonority": 33,
+      "melodyLength": 4,
+      "border": "ridge",
+      "pleasantness": 3.294801391632263
+     }
+    },
+    {
+     "tokenId": 44,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0xa62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=44&h=0xd084c64669a7ac1c182aa0e7e0a3a57851b159c1d58e699183739931deba8295&bh=0xadd76ae4e15aff430485c99679a2c1123f44de55e14f6adfb7bdd467e568a00e&bn=11925992&t=1710545823&wa=0xf70da97812cb96acdf810712aa562db8dfa3dbef&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 3,
+      "sonority": 11,
+      "melodyLength": 8,
+      "border": "solid",
+      "pleasantness": 0.7255934898275882
+     }
+    },
+    {
+     "tokenId": 45,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0xa62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=45&h=0xb707b54349798f8802eaae53807353d14127ff55438a943931a3591dd35c6b6f&bh=0xe7a4b14b46e86c0e3d533b5f1e36bae50a5f60a3d5babae4c81709bdc5e33318&bn=15258200&t=1717210239&wa=0xf70da97812cb96acdf810712aa562db8dfa3dbef&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 1,
+      "complexity": 2,
+      "sonority": 7,
+      "melodyLength": 4,
+      "border": "double",
+      "pleasantness": 2.964525150412844
+     }
+    },
+    {
+     "tokenId": 46,
+     "arweave": "Im23pLhitSPsXjr4LLFvwlVc-zJLq7uJKDZ8zzhp5gI",
+     "query": "a=0xa62fb8b864e14b53e47bee2c612f4408512d3858&c=7777777&tid=46&h=0xd933b494a5c457e7d41e374c277cd756b2e83a80f04cf7d50e432b97790d47ed&bh=0x4b0ee06bcbd70ca8d2a6b4956676ee660f3a27293c6c308744f84f97b455db90&bn=15562758&t=1717819355&wa=0xf70da97812cb96acdf810712aa562db8dfa3dbef&ms=1&mi=1&gp=0&gu=0",
+     "traits": {
+      "syllables": 2,
+      "complexity": 9,
+      "sonority": 29,
+      "melodyLength": 3,
+      "border": "dotted",
+      "pleasantness": 1.9054363613249734
+     }
+    }
+   ]
+  }
+ ]
+}
