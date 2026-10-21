@@ -1,0 +1,1879 @@
+import { Phoneme, Grapheme, GraphemeCondition } from "../types.js";
+// ---------------------------------------------------------------------------
+// Repair constraint types
+// ---------------------------------------------------------------------------
+
+export interface ClusterConstraint {
+  /** [coda sound, onset sound] pairs that are illegal across syllable boundaries. */
+  banned?: [string, string][];
+  /**
+   * Rule-based boundary constraints expanded into banned pairs at runtime.
+   *
+   * Use these instead of large manual `banned` lists so new phonemes can be
+   * incorporated by feature rather than by hand-enumerating every pair.
+   */
+  rules?: BoundaryClusterConstraintRule[];
+  /** How to repair a banned cluster. */
+  repair: "drop-coda" | "drop-onset";
+}
+
+/** Feature selector for filtering coda/onset inventories in boundary rules. */
+export interface BoundaryPhonemeSelector {
+  /** Restrict to these exact phoneme sounds. */
+  sounds?: string[];
+  /** Restrict by manner of articulation. */
+  manner?: Phoneme["mannerOfArticulation"][];
+  /** Restrict by place of articulation. */
+  place?: Phoneme["placeOfArticulation"][];
+  /** Restrict by voicing. */
+  voiced?: boolean;
+}
+
+/** Optional coda↔onset feature relation applied after selector matching. */
+export interface BoundaryPairRelation {
+  /** Require same or different place of articulation. */
+  place?: "same" | "different";
+  /** Require same or different voicing. */
+  voiced?: "same" | "different";
+}
+
+export interface BoundaryClusterConstraintRule {
+  /**
+   * `ban`: matching coda→onset pairs are banned.
+   * `allow-only`: matching codas may only be followed by matching onsets.
+   */
+  mode: "ban" | "allow-only";
+  /** Coda selector for this rule. */
+  coda: BoundaryPhonemeSelector;
+  /** Onset selector for this rule. */
+  onset: BoundaryPhonemeSelector;
+  /** Optional relation between coda and onset features. */
+  relation?: BoundaryPairRelation;
+  /** Explicit pairs to exempt from this rule. */
+  except?: [string, string][];
+}
+
+export interface CodaConstraints {
+  /** Phoneme sounds allowed in word-final position. Unlisted phonemes are dropped. */
+  allowedFinal?: string[];
+  /** Phoneme sounds that must never appear in coda position (any syllable). */
+  bannedCodas?: string[];
+  /** Require voicing agreement among obstruents in coda clusters. */
+  voicingAgreement?: boolean;
+  /** Require nasal+stop to agree in place of articulation. */
+  homorganicNasalStop?: boolean;
+  /**
+   * Nucleus+coda combinations that are phonotactically illegal.
+   * Prevents generation of impossible nucleus+coda pairings (e.g., /ɚŋ/, /ɝŋ/).
+   * Applied during coda selection to filter out banned codas before weighting.
+   */
+  bannedNucleusCodaCombinations?: Array<{
+    /** Nucleus phoneme sounds (IPA symbols, e.g., ["ɚ", "ɝ"]). */
+    nucleus: string[];
+    /** Coda phoneme sounds that cannot follow these nuclei (e.g., ["ŋ"]). */
+    coda: string[];
+  }>;
+}
+
+export interface ClusterLimits {
+  /** Max phonemes in an onset cluster (English: 3 — /s/ + stop + liquid). */
+  maxOnset: number;
+  /** Max phonemes in a coda cluster (English: 3, or 4 with trailing /s/). */
+  maxCoda: number;
+  /** Phonemes that can extend coda beyond maxCoda (English: ["s", "z"]). */
+  codaAppendants?: string[];
+  /** Phonemes that can extend onset beyond normal limits as a prefix (English: ["s"]). */
+  onsetPrependers?: string[];
+  /** If provided, multi-consonant onsets must match an entry. Overrides pure SSP. */
+  attestedOnsets?: string[][];
+  /** If provided, multi-consonant codas must match an entry or prefix of one. */
+  attestedCodas?: string[][];
+}
+
+export interface SonorityConstraints {
+  /** Require rising sonority in onsets (English: true). */
+  risingOnset: boolean;
+  /** Require falling sonority in codas (English: true). */
+  fallingCoda: boolean;
+  /** Minimum sonority distance between adjacent cluster members (0 = equal OK). */
+  minSonorityGap?: number;
+  /** Phonemes exempt from sequencing (e.g. /s/ can violate sonority in "st-", "-ks"). */
+  exempt?: string[];
+}
+
+// ---------------------------------------------------------------------------
+// Reusable positional type
+// ---------------------------------------------------------------------------
+
+/** Data keyed by syllable position (onset / nucleus / coda). */
+export type BySyllablePosition<T> = { onset: T; nucleus: T; coda: T };
+
+// ---------------------------------------------------------------------------
+// Derived articulation types (from Phoneme)
+// ---------------------------------------------------------------------------
+
+/** Manner of articulation values, derived from the Phoneme union. */
+export type MannerOfArticulation = Phoneme["mannerOfArticulation"];
+
+/** Place of articulation values, derived from the Phoneme union. */
+export type PlaceOfArticulation = Phoneme["placeOfArticulation"];
+
+// ---------------------------------------------------------------------------
+// Sub-interfaces
+// ---------------------------------------------------------------------------
+
+/**
+ * Sonority hierarchy mapping: manner/place of articulation to sonority value.
+ * Higher values = more sonorous (vowels highest, stops lowest).
+ *
+ * Keys are type-checked against the Phoneme articulation unions, so typos
+ * like `"fircative"` are caught at compile time. `Partial` because not
+ * every language uses every articulation category.
+ */
+export interface SonorityHierarchy {
+  mannerOfArticulation: Partial<Record<MannerOfArticulation, number>>;
+  /**
+   * Sonority adjustment by place of articulation.
+   *
+   * Note: this combines vowel position (front / central / back) and
+   * consonant place of articulation (bilabial, alveolar, …) into a
+   * single map. Linguistically these are different dimensions, but for
+   * sonority scoring a unified numeric adjustment works well enough.
+   */
+  placeOfArticulation: Partial<Record<PlaceOfArticulation, number>>;
+  voicedBonus: number;
+  tenseBonus: number;
+}
+
+/**
+ * Syllable structure rules controlling how syllables are built.
+ */
+export interface SyllableStructureRules {
+  /** Maximum onset cluster length (English: 3, e.g. /str-/ in "strong"). */
+  maxOnsetLength: number;
+  /** Maximum coda cluster length (English: 4, e.g. /-lpts/ in "sculpts"). */
+  maxCodaLength: number;
+  /** Maximum nucleus length (English: 1 — no complex nuclei). */
+  maxNucleusLength: number;
+  /** Letter-length targets per syllable count: [min, peak_min, peak_max, max]. */
+  letterLengthTargets?: Record<number, [number, number, number, number]>;
+}
+
+/**
+ * Weighted probability tables controlling how syllable components are sized
+ * and whether they appear at all. These are the "generation heuristics" that
+ * shape how words *feel* — independent of the phoneme/grapheme inventory.
+ */
+export interface GenerationWeights {
+  /** Onset length distributions: [lengthValue, weight][] */
+  onsetLength: {
+    /** Weights when the word is monosyllabic. */
+    monosyllabic: [number, number][];
+    /** Weights when the previous syllable had no coda (hiatus avoidance). */
+    followingNucleus: [number, number][];
+    /** Default weights for polysyllabic onsets. */
+    default: [number, number][];
+    /** Weights for longer words (4+ syllables). Falls back to default if not set. */
+    long?: [number, number][];
+  };
+
+  /** Coda length distributions */
+  codaLength: {
+    /** Monosyllabic coda weights keyed by onset length. */
+    monosyllabic: Record<number, [number, number][]>;
+    /** Fallback for monosyllabic codas when onset length isn't in the map. */
+    monosyllabicDefault: [number, number][];
+    /** Non-zero coda length weights for polysyllabic words. */
+    polysyllabicNonzero: [number, number][];
+    /** Weight for zero-length coda when it's the last syllable. */
+    zeroWeightEndOfWord: number;
+    /** Weight for zero-length coda mid-word. */
+    zeroWeightMidWord: number;
+  };
+
+  /** Percentage chances (0–100) controlling structural decisions. */
+  probability: {
+    /** Chance the first syllable has an onset. */
+    hasOnsetStartOfWord: number;
+    /** Chance a non-initial syllable has an onset when the previous has a coda. */
+    hasOnsetAfterCoda: number;
+    /** Chance a monosyllabic word has a coda. */
+    hasCodaMonosyllabic: number;
+    /** Chance the final syllable has a coda. */
+    hasCodaEndOfWord: number;
+    /** Chance a mid-word syllable has a coda. */
+    hasCodaMidWord: number;
+    /** Chance to append a final 's' phoneme. */
+    finalS: number;
+    /**
+     * Chance (0–100) to extend a word-final singleton nasal coda with its
+     * voiced homorganic stop (n→nd, m→mb, ŋ→ŋg).  Default: 0 (disabled).
+     */
+    nasalStopExtension?: number;
+  };
+
+  /** Boundary adjustment policy probabilities (0–100). */
+  boundaryPolicy: {
+    /** Chance to drop coda-final phoneme when boundary sonority is equal. */
+    equalSonorityDrop: number;
+    /** Chance to drop coda-final phoneme when coda rises toward boundary. */
+    risingCodaDrop: number;
+  };
+}
+
+/** Policy controls for vowel hiatus and post-vowel glide behavior. */
+export interface HiatusPolicy {
+  /**
+   * Chance (0-100) that top-down consonant-plan decrements should be blocked
+   * when they would create a V.V boundary.
+   */
+  planGuardProbability: number;
+  /**
+   * Multiplier applied to /j,w/ onset weights after open syllables.
+   * Lower values make these glides rarer while keeping them possible.
+   */
+  postVowelGlideMultiplier: number;
+  /** Weighted fallback onsets used for root-level residual hiatus repair. */
+  fallbackBridgeOnsets: [string, number][];
+}
+
+/** Shared default fallback bridge onsets used to repair vowel hiatus. */
+export function defaultFallbackBridgeOnsets(): [string, number][] {
+  return [["h", 100]];
+}
+
+/**
+ * Target phoneme-length distributions by generation mode.
+ *
+ * Each tuple is `[phonemeCount, weight]`. Weights are relative and do not need
+ * to sum to 100.
+ *
+ * **Required** on {@link LanguageConfig}. Generation samples a target phoneme
+ * count from these distributions before building syllables.
+ *
+ * @since 0.6.0
+ */
+export interface PhonemeLengthWeights {
+  /** Distribution for text mode generation. */
+  text: [number, number][];
+  /** Distribution for lexicon mode generation. */
+  lexicon: [number, number][];
+}
+
+/**
+ * Mapping from target phoneme length to syllable-count distribution.
+ *
+ * **Required** on {@link LanguageConfig}. For each phoneme count in
+ * {@link PhonemeLengthWeights}, there must be a corresponding entry here
+ * mapping to feasible syllable counts with weights.
+ *
+ * Example:
+ * ```ts
+ * {
+ *   text: {
+ *     4: [[1, 88], [2, 12]]
+ *   },
+ *   lexicon: {
+ *     6: [[2, 68], [3, 30], [4, 2]]
+ *   }
+ * }
+ * ```
+ *
+ * @since 0.6.0
+ */
+export interface PhonemeToSyllableWeights {
+  /** Mapping used in text mode. */
+  text: Record<number, [number, number][]>;
+  /** Mapping used in lexicon mode. */
+  lexicon: Record<number, [number, number][]>;
+}
+
+export interface FixedPrimaryStressRules {
+  type: "fixed";
+  fixedPosition: number;
+}
+
+export interface InitialPrimaryStressRules {
+  type: "initial";
+}
+
+export interface PenultimatePrimaryStressRules {
+  type: "penultimate";
+}
+
+export interface WeightSensitivePrimaryStressRules {
+  type: "weight-sensitive";
+  disyllabicWeights: [number, number];
+  polysyllabicWeights: {
+    heavyPenult: number;
+    lightPenult: number;
+    antepenultHeavy: number;
+    antepenultLight: number;
+    initial: number;
+  };
+}
+
+export interface OTPrimaryStressRules {
+  type: "ot";
+  otConfig: import("../core/ot-stress.js").OTStressConfig;
+}
+
+export type PrimaryStressRules =
+  | FixedPrimaryStressRules
+  | InitialPrimaryStressRules
+  | PenultimatePrimaryStressRules
+  | WeightSensitivePrimaryStressRules
+  | OTPrimaryStressRules;
+
+export interface SecondaryStressRules {
+  enabled: boolean;
+  probability: number;
+  heavyWeight: number;
+  lightWeight: number;
+  candidateWindow: "first-three" | "all-nonprimary";
+}
+
+export interface RhythmicStressRules {
+  enabled: boolean;
+  probability: number;
+  requireUnstressedNeighbors: boolean;
+}
+
+export interface StressNucleusRules {
+  stressedNucleusBan?: string[];
+  unstressedNucleusBoost?: Record<string, number>;
+}
+
+/**
+ * Declarative stress assignment rules for pronunciation generation.
+ */
+export interface StressRules {
+  primary: PrimaryStressRules;
+  secondary: SecondaryStressRules;
+  rhythmic: RhythmicStressRules;
+  nucleus: StressNucleusRules;
+}
+
+export type SyllableIndexClass = "initial" | "medial" | "final";
+
+/**
+ * Feature-based selector for aspiration targets.
+ */
+export interface AspirationTargetSelector {
+  /** Which syllable segment to match. */
+  segment: "onset" | "nucleus" | "coda";
+  /** Optional index inside the segment (defaults to first element). */
+  index?: number;
+  /** Restrict by phoneme sound. */
+  sounds?: string[];
+  /** Restrict by manner of articulation. */
+  manner?: Phoneme["mannerOfArticulation"][];
+  /** Restrict by place of articulation. */
+  place?: Phoneme["placeOfArticulation"][];
+  /** Restrict by voicing. */
+  voiced?: boolean;
+}
+
+/**
+ * Predicate evaluated for each syllable when deciding aspiration probability.
+ */
+export interface AspirationPredicate {
+  wordInitial?: boolean;
+  stressed?: boolean;
+  postStressed?: boolean;
+  syllableIndexClass?: SyllableIndexClass;
+  previousCodaSounds?: string[];
+}
+
+export interface AspirationRule {
+  id: string;
+  when: AspirationPredicate;
+  probability: number;
+}
+
+/**
+ * Language-level aspiration behavior for pronunciation output.
+ *
+ * Aspiration eligibility is driven by explicit target selectors plus
+ * ordered probability rules.
+ */
+export interface AspirationRules {
+  enabled: boolean;
+  targets: AspirationTargetSelector[];
+  rules: AspirationRule[];
+  fallbackProbability: number;
+}
+
+export interface ResolvedAspirationRules {
+  enabled: boolean;
+  targets: AspirationTargetSelector[];
+  rules: AspirationRule[];
+  fallbackProbability: number;
+}
+
+export interface ResolvedStressRules {
+  primary: PrimaryStressRules;
+  secondary: SecondaryStressRules;
+  rhythmic: RhythmicStressRules;
+  nucleus: StressNucleusRules;
+}
+
+/**
+ * A single vowel-reduction mapping: source vowel → target reduced vowel
+ * with an associated probability.
+ */
+export interface VowelReductionRule {
+  /** Source vowel IPA symbol */
+  source: string;
+  /** Target reduced vowel IPA symbol */
+  target: string;
+  /** Reduction probability 0-100 */
+  probability: number;
+}
+
+/**
+ * Configuration for vowel reduction in unstressed syllables.
+ *
+ * Stress-timed languages (e.g. English) reduce unstressed vowels toward
+ * a central vowel (typically schwa /ə/).  Tense vowels and diphthongs
+ * resist reduction more than lax monophthongs.
+ */
+export interface VowelReductionConfig {
+  /** Whether vowel reduction is enabled at all. */
+  enabled: boolean;
+  /** Per-vowel reduction rules. Vowels not listed are immune. */
+  rules: VowelReductionRule[];
+  /** Whether secondary-stressed syllables can reduce */
+  reduceSecondaryStress: boolean;
+  /** Probability multiplier for secondary stress (0-100), applied on top of per-vowel probability */
+  secondaryStressProbability?: number;
+  /** Positional probability multipliers (0.0-1.0) */
+  positionalModifiers?: {
+    wordInitial?: number;
+    wordMedial?: number;
+    wordFinal?: number;
+  };
+}
+
+/**
+ * Grouped pronunciation controls for stress, aspiration, and reduction.
+ *
+ * This is the canonical pronunciation entrypoint on LanguageConfig.
+ */
+export interface PronunciationConfig {
+  /** Stress assignment rules. */
+  stress: StressRules;
+  /** Aspiration behavior for pronunciation output. */
+  aspiration?: AspirationRules;
+  /** Vowel reduction settings for unstressed syllables. */
+  vowelReduction?: VowelReductionConfig;
+}
+
+// ---------------------------------------------------------------------------
+// Doubling & Spelling Rules
+// ---------------------------------------------------------------------------
+
+/**
+ * Language-level consonant doubling strategy.
+ * Controls how a language signals vowel length/quality through consonant spelling.
+ */
+export interface DoublingConfig {
+  /** Master switch. */
+  enabled: boolean;
+  /** What triggers doubling. */
+  trigger: "lax-vowel" | "gemination" | "none";
+  /** Base probability (0-100) when trigger condition is met. */
+  probability: number;
+  /** Max doubled consonants per word. */
+  maxPerWord: number;
+  /** IPA sounds that never double. */
+  neverDouble: string[];
+  /** Word-final doubling restricted to these sounds only. */
+  finalDoublingOnly?: string[];
+  /** Suppress doubling after vowels that were reduced (schwa substitution). */
+  suppressAfterReduction: boolean;
+  /** Suppress doubling when the next nucleus is tense or a diphthong. */
+  suppressBeforeTense: boolean;
+  /** Probability modifier for unstressed syllable context (0.0-1.0). */
+  unstressedModifier?: number;
+  /** Map of phoneme sounds to their doubled form (overrides simple repetition). e.g. { k: 'ck' } */
+  doubledForms?: Record<string, string>;
+  /** Sounds that should never double word-finally. */
+  neverDoubleFinal?: string[];
+}
+
+/**
+ * A single vowel-grapheme swap for the silent-e rule.
+ * When a word ends in a single consonant grapheme preceded by a long vowel,
+ * the vowel's "long" grapheme can be replaced with its "short" form and a
+ * silent 'e' appended to signal the long pronunciation.
+ */
+export interface SilentESwap {
+  /** IPA phoneme sound this swap applies to (e.g. "eɪ", "i:", "aɪ"). */
+  phoneme: string;
+  /** The "long" grapheme form to look for (e.g. "ai", "ee", "igh"). */
+  from: string;
+  /** The "short" replacement form (e.g. "a", "e", "i"). */
+  to: string;
+}
+
+/**
+ * Configuration for the silent-e (magic-e / split digraph) spelling pattern.
+ *
+ * When enabled, word-final VCe patterns are created by replacing a long-vowel
+ * grapheme with its short counterpart and appending silent 'e'. This only
+ * applies when the word ends in a single consonant grapheme.
+ */
+/**
+ * A consonant sound that always receives a trailing silent-e word-finally,
+ * regardless of the preceding vowel's length (orthographic convention).
+ * E.g. English words never end in bare 'v': "give", "love", "have".
+ */
+export interface SilentEAppendRule {
+  /** IPA consonant sound (e.g. "v", "z"). */
+  sound: string;
+  /** Probability (0-100) of appending silent-e when this sound is word-final. */
+  probability: number;
+}
+
+export interface SilentEConfig {
+  /** Master switch. */
+  enabled: boolean;
+  /** Probability (0-100) of applying when the pattern is eligible. */
+  probability: number;
+  /** Vowel grapheme swaps that define eligible patterns. */
+  swaps: SilentESwap[];
+  /**
+   * Consonant sounds (IPA) where silent-e should NOT be applied.
+   * E.g. /w/, /h/, /j/ — English never uses silent-e after these.
+   */
+  excludedCodas?: string[];
+  /**
+   * Consonant sounds where silent-e is always appended word-finally,
+   * regardless of vowel length. This is purely orthographic — the vowel
+   * sound doesn't change. E.g. English "v" → "give", "love", "have".
+   */
+  appendAfter?: SilentEAppendRule[];
+}
+
+/**
+ * A post-selection spelling rule (regex-based transformation on written output).
+ */
+export interface SpellingRule {
+  /** Human-readable name for debugging. */
+  name: string;
+  /**
+   * Regex pattern to match in the written form.
+   *
+   * Must stay productive: exact whole-word anchored rewrites belong in
+   * {@link GapSpelling}, not in `spellingRules`.
+   */
+  pattern: string;
+  /** Regex flags (default: "g"). */
+  flags?: string;
+  /** Replacement string (can use $1, $2 capture groups). */
+  replacement: string;
+  /** Probability (0-100) of applying when matched. Default: 100. */
+  probability?: number;
+  /** When to apply: "syllable" (per-syllable), "word" (full word), or "both" (default). */
+  scope?: "syllable" | "word" | "both";
+}
+
+export type GapSpellingTargetLayer =
+  | "grapheme"
+  | "spellingRule"
+  | "phonotactics"
+  | "morphology"
+  | "unknown";
+
+/**
+ * A bare-word spelling override used to capture exact phoneme→surface mappings
+ * that the current foundational rules do not yet model productively.
+ *
+ * As the catalog grows, repeated patterns in these entries should inform more
+ * general phonotactic, orthographic, or morphological rules that can replace
+ * individual overrides over time.
+ */
+export interface GapSpelling {
+  /** Human-readable name for trace output, debugging, and audits. */
+  name: string;
+  /** Full flattened phoneme sequence for the word. */
+  phonemes: string[];
+  /** Final written form that should win for this exact sequence. */
+  replacement: string;
+  /** Relative selection weight when multiple variants share the same phonemes. */
+  weight?: number;
+  /**
+   * Which foundational rule family this entry most likely belongs to.
+   *
+   * This is audit/trace metadata and does not change when the override applies:
+   * gap spellings remain exact bare-word overrides.
+   */
+  targetLayer: GapSpellingTargetLayer;
+  /**
+   * Optional hyphenated written form. Defaults to {@link replacement} when
+   * omitted.
+   */
+  hyphenated?: string;
+}
+
+// ---------------------------------------------------------------------------
+// Written-form constraints
+// ---------------------------------------------------------------------------
+
+export interface WrittenFormConstraints {
+  /**
+   * Max consecutive consonant grapheme units allowed. Default: 4.
+   *
+   * Multi-letter graphemes (e.g. "ch", "sh", "tch") count as a single unit.
+   * For example, "tchstr" tokenizes to ["tch", "s", "t", "r"] = 4 units.
+   */
+  maxConsonantGraphemes?: number;
+
+  /**
+   * Consonant digraphs/trigraphs treated as atomic grapheme units.
+   * Longest-match-first during tokenization. Order matters: longer entries first.
+   * Default for English: ["tch", "dge", "ch", "sh", "th", "ng", "ph", "wh", "ck"]
+   */
+  consonantGraphemes?: string[];
+
+  /**
+   * Max consecutive raw consonant *letters* (not grapheme units) allowed.
+   * Applied as a second pass after grapheme-aware repair.
+   */
+  maxConsonantLetters?: number;
+
+  /**
+   * Max consecutive consonant letters allowed at the end of a word.
+   * Applied after general consonant repairs. Trims from the interior
+   * of the final consonant cluster. Default: no limit.
+   */
+  maxFinalConsonantLetters?: number;
+
+  /**
+   * Max consecutive vowel *letters* (a, e, i, o, u, y) allowed.
+   * Applied after consonant repairs. Default: no limit.
+   */
+  maxVowelLetters?: number;
+
+  /** Orthographic repair rules applied after grapheme generation. */
+  orthographicRepairs?: OrthographicRepair[];
+}
+
+/** A post-write orthographic repair rule. */
+export interface OrthographicRepair {
+  /** Human-readable name. */
+  name: string;
+  /** Regex to test on the junction between adjacent syllable written forms. */
+  boundaryMatch: RegExp;
+  /** String to insert between the syllables when the match fires. */
+  insert: string;
+}
+
+// ---------------------------------------------------------------------------
+// Main interface
+// ---------------------------------------------------------------------------
+
+/**
+ * Complete language configuration capturing the phonological system
+ * needed to generate words in a given language.
+ *
+ * `sonorityLevels` is intentionally excluded — it is derived data that
+ * should be computed from the `sonorityHierarchy` and `phonemes` using
+ * {@link computeSonorityLevels} to guarantee consistency.
+ */
+export interface LanguageConfig {
+  /** Language identifier (e.g., "en", "es", "fr") */
+  id: string;
+  /** Human-readable language name */
+  name: string;
+
+  /**
+   * Full phoneme inventory for this language.
+   *
+   * **Invariant:** must equal the union of all values in {@link phonemeMaps}.
+   * Both are kept for ergonomics — flat iteration vs. positional lookup.
+   */
+  phonemes: Phoneme[];
+  /**
+   * Phonemes grouped by syllable position.
+   * Keys are IPA symbols (e.g., "p", "æ"); values are all Phoneme
+   * objects matching that sound in the given position.
+   */
+  phonemeMaps: BySyllablePosition<Map<string, Phoneme[]>>;
+
+  /** Grapheme (spelling) mappings for each phoneme */
+  graphemes: Grapheme[];
+  /**
+   * Graphemes grouped by syllable position.
+   * Keys are IPA phoneme symbols; values are all Grapheme spelling
+   * options for that phoneme in the given position.
+   */
+  graphemeMaps: BySyllablePosition<Map<string, Grapheme[]>>;
+  /**
+   * Reusable grapheme condition presets keyed by alias name.
+   * Grapheme-level condition fields override alias fields when both are present.
+   */
+  graphemeConditionAliases?: Record<string, Omit<GraphemeCondition, "alias">>;
+
+  /**
+   * Phonotactic constraints: patterns for invalid clusters.
+   * Each entry is a regex source string (e.g. `"sr"`, `"ʃh"`).
+   * Stored as strings for JSON-serializability; compiled to RegExp at
+   * runtime by {@link buildRuntime} in the generator.
+   *
+   * Uses `boundary` (cross-syllable) rather than `nucleus` since nuclei
+   * are not cluster-constrained.
+   */
+  invalidClusters: {
+    onset: string[];
+    coda: string[];
+    boundary: string[];
+  };
+
+  /** Sonority hierarchy used for cluster validation */
+  sonorityHierarchy: SonorityHierarchy;
+
+  /** Rules governing syllable structure */
+  syllableStructure: SyllableStructureRules;
+
+  /** Weighted probability tables for generation heuristics. */
+  generationWeights: GenerationWeights;
+  /** Policy knobs for hiatus prevention and post-vowel glide behavior. */
+  hiatusPolicy?: HiatusPolicy;
+
+  /**
+   * Required top-down targets for generation.
+   *
+   * Generation first samples a target phoneme count from these distributions,
+   * then samples a compatible syllable count via {@link phonemeToSyllableWeights}.
+   */
+  phonemeLengthWeights: PhonemeLengthWeights;
+
+  /**
+   * Required mode-specific mapping from target phoneme count to syllable-count
+   * probabilities.
+   */
+  phonemeToSyllableWeights: PhonemeToSyllableWeights;
+
+  /** Pronunciation behavior (stress, aspiration, and reduction). */
+  pronunciation: PronunciationConfig;
+
+  /** Consonant doubling strategy. */
+  doubling?: DoublingConfig;
+
+  /** Silent-e (magic-e / split digraph) configuration. */
+  silentE?: SilentEConfig;
+
+  /** Bare-word spelling overrides keyed by exact phoneme sequence. */
+  gapSpellings?: GapSpelling[];
+
+  /** Post-selection spelling adjustments. */
+  spellingRules?: SpellingRule[];
+
+  /** Cross-syllable consonant cluster repair constraints. */
+  clusterConstraint?: ClusterConstraint;
+
+  /** Word-final coda repair constraints. */
+  codaConstraints?: CodaConstraints;
+
+  /** Feature-based cluster length and shape constraints. */
+  clusterLimits?: ClusterLimits;
+
+  /** Feature-based sonority sequencing constraints. */
+  sonorityConstraints?: SonorityConstraints;
+
+  /** Written-form readability constraints. */
+  writtenFormConstraints?: WrittenFormConstraints;
+
+  /** Morphological word-formation configuration. */
+  morphology?: MorphologyConfig;
+
+  /**
+   * Cluster-specific frequency weights to suppress over-represented phoneme combinations.
+   *
+   * Supports both uniform weights (applied to all positions) and position-based weights
+   * (final vs. non-final syllables), allowing fine-grained control over word-final
+   * pseudo-plurals (e.g., "ts", "ns") vs. legitimate mid-word clusters.
+   *
+   * **Uniform format (backwards compatible):**
+   * ```ts
+   * clusterWeights: {
+   *   coda: {
+   *     "n,s": 0.3  // Apply to all positions
+   *   }
+   * }
+   * ```
+   *
+   * **Position-based format (recommended):**
+   * ```ts
+   * clusterWeights: {
+   *   coda: {
+   *     final: {
+   *       "t,s": 0.03,  // Aggressive reduction for word-final position
+   *       "n,s": 0.03
+   *     },
+   *     nonFinal: {
+   *       "t,s": 0.4,   // Moderate reduction for mid-word
+   *       "n,s": 0.4
+   *     }
+   *   }
+   * }
+   * ```
+   *
+   * When position-based weights are present, they take precedence over uniform weights.
+   * If a cluster is not found in the position-specific map, it falls back to the uniform
+   * weight (if defined), or 1.0 (no reduction).
+   */
+  clusterWeights?: {
+    /** Weights for onset clusters (not currently used in English). */
+    onset?: Record<string, number>;
+    /** Weights for coda clusters. */
+    coda?:
+      | Record<string, number>
+      | {
+          /** Weights for word-final syllable codas. */
+          final?: Record<string, number>;
+          /** Weights for non-final syllable codas. */
+          nonFinal?: Record<string, number>;
+        };
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Morphology types
+// ---------------------------------------------------------------------------
+
+/** Explicit syllable template for an affix phoneme sequence. */
+export interface AffixSyllable {
+  onset: string[];   // phoneme sounds
+  nucleus: string[]; // phoneme sounds
+  coda: string[];    // phoneme sounds
+}
+
+/** Orthographic transform applied at affix\u2194root junctions. */
+export interface BoundaryTransform {
+  /** Human-readable name for this rule. */
+  name: string;
+  /** Regex to test against the root's written form (for suffixes) or reversed form (for prefixes). */
+  match: RegExp;
+  /** Replacement string (passed to String.replace). */
+  replace: string;
+  /** Names of other transforms that, if they fired, block this one. */
+  blockedBy?: string[];
+}
+
+/** Phonological condition for allomorph selection. */
+export interface PhonologicalCondition {
+  /** Which phoneme to test: the one adjacent to the affix boundary. */
+  position: "preceding" | "following";
+  /** If set, phoneme.sound must be one of these exact sounds. */
+  sounds?: string[];
+  /** If set, phoneme.voiced must match this value. */
+  voiced?: boolean;
+  /** If set, phoneme.mannerOfArticulation must be one of these. */
+  manner?: string[];
+  /** If set, phoneme.placeOfArticulation must be one of these. */
+  place?: string[];
+}
+
+/** A single allomorphic variant of an affix. */
+export interface AllomorphVariant {
+  /** Config-driven phonological condition. */
+  phonologicalCondition: PhonologicalCondition;
+  /** Phoneme sequence for this variant. */
+  phonemes: string[];
+  /** Explicit syllable structure for this variant. */
+  syllables?: AffixSyllable[];
+  /** Number of syllables this variant adds. */
+  syllableCount: number;
+  /** Written form if different from the base affix (e.g. "-es" vs "-s"). */
+  written?: string;
+}
+
+/** A root alternation applied at an affix boundary (morphophonemics). */
+export interface MorphophonemicRule {
+  /** Human-readable id used in traces. */
+  name: string;
+  /** Lower values apply first. Default is 100. */
+  priority?: number;
+  /** Which root segment near the boundary should be inspected/replaced. */
+  target?: "edge" | "nucleus";
+  /** Optional boundary condition for the adjacent root phoneme. */
+  phonologicalCondition?: PhonologicalCondition;
+  /** Replace the matched boundary root phoneme with this sound. */
+  replaceSound?: string;
+  /** Optional regex-based rewrite on root written form. */
+  writtenMatch?: RegExp;
+  /** Replacement for {@link writtenMatch}. */
+  writtenReplace?: string;
+}
+
+/** A morphological affix (prefix or suffix). */
+export interface Affix {
+  /** Whether this attaches before or after the root. */
+  type: "prefix" | "suffix";
+  /** Written form (e.g. "ing", "tion", "un", "re"). */
+  written: string;
+  /** Default phoneme sequence (IPA sound strings matching phonemes in the inventory). */
+  phonemes: string[];
+  /** Explicit syllable structure for this affix. */
+  syllables?: AffixSyllable[];
+  /** Number of syllables this affix adds. */
+  syllableCount: number;
+  /** How this affix affects stress placement. */
+  stressEffect: "none" | "attract-preceding" | "primary" | "secondary";
+  /** Relative frequency weight for selection. */
+  frequency: number;
+  /** Config-driven boundary transforms applied at affix\u2194root junctions. */
+  boundaryTransforms?: BoundaryTransform[];
+  /** Allomorphic variants selected by root-final context. If present, overrides base phonemes/syllableCount. */
+  allomorphs?: AllomorphVariant[];
+  /** Morphophonemic alternations applied at this affix boundary. */
+  morphophonemicRules?: MorphophonemicRule[];
+}
+
+/** Configuration for morphological word formation. */
+export interface MorphologyConfig {
+  enabled: boolean;
+  prefixes: Affix[];
+  suffixes: Affix[];
+  boundaryPolicy?: {
+    /** Whether to repair prefix→root vowel hiatus at phoneme boundaries. */
+    enablePrefixRootFallback?: boolean;
+    /** Whether to repair root→suffix vowel hiatus at phoneme boundaries. */
+    enableRootSuffixFallback?: boolean;
+    /** Weighted fallback onsets used for morphology boundary repair. */
+    fallbackBridgeOnsets?: [string, number][];
+  };
+  templateWeights: {
+    text: { bare: number; suffixed: number; prefixed: number; both: number };
+    lexicon: { bare: number; suffixed: number; prefixed: number; both: number };
+  };
+}
+
+const REGEX_LITERAL_META = /[\\.*+?()[\]{}|]/;
+
+export function isWholeWordAnchoredSpellingRule(rule: SpellingRule): boolean {
+  const scope = rule.scope ?? "both";
+  const isLiteralPattern = (() => {
+    if (!rule.pattern.startsWith("^") || !rule.pattern.endsWith("$")) return false;
+    const inner = rule.pattern.slice(1, -1);
+    return inner.length > 0 && !REGEX_LITERAL_META.test(inner);
+  })();
+  const isLiteralReplacement = !rule.replacement.includes("$");
+  return (scope === "word" || scope === "both") && isLiteralPattern && isLiteralReplacement;
+}
+
+// ---------------------------------------------------------------------------
+// Utilities
+// ---------------------------------------------------------------------------
+
+const DEFAULT_STRESS_RULES: ResolvedStressRules = {
+  primary: {
+    type: "weight-sensitive",
+    disyllabicWeights: [70, 30],
+    polysyllabicWeights: {
+      heavyPenult: 70,
+      lightPenult: 30,
+      antepenultHeavy: 20,
+      antepenultLight: 60,
+      initial: 10,
+    },
+  },
+  secondary: {
+    enabled: true,
+    probability: 40,
+    heavyWeight: 70,
+    lightWeight: 30,
+    candidateWindow: "first-three",
+  },
+  rhythmic: {
+    enabled: true,
+    probability: 40,
+    requireUnstressedNeighbors: true,
+  },
+  nucleus: {},
+};
+
+const DEFAULT_ASPIRATION_RULES: ResolvedAspirationRules = {
+  enabled: true,
+  targets: [
+    {
+      segment: "onset",
+      index: 0,
+      manner: ["stop"],
+      voiced: false,
+    },
+  ],
+  rules: [
+    { id: "post-s", when: { previousCodaSounds: ["s"] }, probability: 5 },
+    { id: "word-initial", when: { wordInitial: true }, probability: 95 },
+    { id: "stressed-onset", when: { stressed: true }, probability: 90 },
+    { id: "post-stressed", when: { postStressed: true }, probability: 50 },
+  ],
+  fallbackProbability: 30,
+};
+
+export function resolveStressRules(rules: StressRules): ResolvedStressRules {
+  return {
+    primary: rules.primary,
+    secondary: {
+      enabled: rules.secondary.enabled ?? DEFAULT_STRESS_RULES.secondary.enabled,
+      probability: rules.secondary.probability ?? DEFAULT_STRESS_RULES.secondary.probability,
+      heavyWeight: rules.secondary.heavyWeight ?? DEFAULT_STRESS_RULES.secondary.heavyWeight,
+      lightWeight: rules.secondary.lightWeight ?? DEFAULT_STRESS_RULES.secondary.lightWeight,
+      candidateWindow: rules.secondary.candidateWindow ?? DEFAULT_STRESS_RULES.secondary.candidateWindow,
+    },
+    rhythmic: {
+      enabled: rules.rhythmic.enabled ?? DEFAULT_STRESS_RULES.rhythmic.enabled,
+      probability: rules.rhythmic.probability ?? DEFAULT_STRESS_RULES.rhythmic.probability,
+      requireUnstressedNeighbors:
+        rules.rhythmic.requireUnstressedNeighbors
+        ?? DEFAULT_STRESS_RULES.rhythmic.requireUnstressedNeighbors,
+    },
+    nucleus: {
+      stressedNucleusBan: rules.nucleus.stressedNucleusBan
+        ? [...rules.nucleus.stressedNucleusBan]
+        : undefined,
+      unstressedNucleusBoost: rules.nucleus.unstressedNucleusBoost
+        ? { ...rules.nucleus.unstressedNucleusBoost }
+        : undefined,
+    },
+  };
+}
+
+/**
+ * Resolve aspiration config into fully-populated deterministic rules.
+ */
+export function resolveAspirationRules(rules?: AspirationRules): ResolvedAspirationRules {
+  if (!rules) {
+    return {
+      enabled: DEFAULT_ASPIRATION_RULES.enabled,
+      targets: DEFAULT_ASPIRATION_RULES.targets.map((t) => ({ ...t, sounds: t.sounds ? [...t.sounds] : undefined, manner: t.manner ? [...t.manner] : undefined, place: t.place ? [...t.place] : undefined })),
+      rules: DEFAULT_ASPIRATION_RULES.rules.map((r) => ({
+        id: r.id,
+        probability: r.probability,
+        when: {
+          ...r.when,
+          previousCodaSounds: r.when.previousCodaSounds ? [...r.when.previousCodaSounds] : undefined,
+        },
+      })),
+      fallbackProbability: DEFAULT_ASPIRATION_RULES.fallbackProbability,
+    };
+  }
+
+  return {
+    enabled: rules.enabled ?? DEFAULT_ASPIRATION_RULES.enabled,
+    targets: (rules.targets && rules.targets.length > 0 ? rules.targets : DEFAULT_ASPIRATION_RULES.targets)
+      .map((target) => ({
+        ...target,
+        sounds: target.sounds ? [...target.sounds] : undefined,
+        manner: target.manner ? [...target.manner] : undefined,
+        place: target.place ? [...target.place] : undefined,
+      })),
+    rules: (rules.rules && rules.rules.length > 0 ? rules.rules : DEFAULT_ASPIRATION_RULES.rules)
+      .map((rule) => ({
+        id: rule.id,
+        probability: rule.probability,
+        when: {
+          ...rule.when,
+          previousCodaSounds: rule.when.previousCodaSounds ? [...rule.when.previousCodaSounds] : undefined,
+        },
+      })),
+    fallbackProbability: rules.fallbackProbability ?? DEFAULT_ASPIRATION_RULES.fallbackProbability,
+  };
+}
+
+function toBoundaryPairKey(codaSound: string, onsetSound: string): string {
+  return `${codaSound}|${onsetSound}`;
+}
+
+function splitBoundaryPairKey(key: string): [string, string] {
+  const [coda, onset] = key.split("|");
+  return [coda, onset];
+}
+
+function matchesBoundarySelector(phoneme: Phoneme, selector: BoundaryPhonemeSelector): boolean {
+  if (selector.sounds && !selector.sounds.includes(phoneme.sound)) return false;
+  if (selector.manner && !selector.manner.includes(phoneme.mannerOfArticulation)) return false;
+  if (selector.place && !selector.place.includes(phoneme.placeOfArticulation)) return false;
+  if (selector.voiced !== undefined && selector.voiced !== phoneme.voiced) return false;
+  return true;
+}
+
+function matchesBoundaryRelation(
+  coda: Phoneme,
+  onset: Phoneme,
+  relation?: BoundaryPairRelation,
+): boolean {
+  if (!relation) return true;
+
+  if (relation.place) {
+    const isSamePlace = coda.placeOfArticulation === onset.placeOfArticulation;
+    if ((relation.place === "same" && !isSamePlace) || (relation.place === "different" && isSamePlace)) {
+      return false;
+    }
+  }
+
+  if (relation.voiced) {
+    const isSameVoicing = coda.voiced === onset.voiced;
+    if ((relation.voiced === "same" && !isSameVoicing) || (relation.voiced === "different" && isSameVoicing)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function uniquePositionPhonemes(positionMap: Map<string, Phoneme[]>): Phoneme[] {
+  return Array.from(positionMap.values())
+    .flat()
+    .filter((phoneme, idx, phonemes) =>
+      idx === phonemes.findIndex(
+        p =>
+          p.sound === phoneme.sound &&
+          p.mannerOfArticulation === phoneme.mannerOfArticulation &&
+          p.placeOfArticulation === phoneme.placeOfArticulation &&
+          p.voiced === phoneme.voiced,
+      ),
+    );
+}
+
+function expandBoundaryRule(
+  rule: BoundaryClusterConstraintRule,
+  codaInventory: Phoneme[],
+  onsetInventory: Phoneme[],
+): Set<string> {
+  const matchedCodas = codaInventory.filter(p => matchesBoundarySelector(p, rule.coda));
+  const matchedOnsets = onsetInventory.filter(p => matchesBoundarySelector(p, rule.onset));
+  const expanded = new Set<string>();
+
+  if (rule.mode === "ban") {
+    for (const coda of matchedCodas) {
+      for (const onset of matchedOnsets) {
+        if (!matchesBoundaryRelation(coda, onset, rule.relation)) continue;
+        expanded.add(toBoundaryPairKey(coda.sound, onset.sound));
+      }
+    }
+  } else {
+    const allowed = new Set<string>();
+    for (const coda of matchedCodas) {
+      for (const onset of matchedOnsets) {
+        if (!matchesBoundaryRelation(coda, onset, rule.relation)) continue;
+        allowed.add(toBoundaryPairKey(coda.sound, onset.sound));
+      }
+    }
+    for (const coda of matchedCodas) {
+      for (const onset of onsetInventory) {
+        const key = toBoundaryPairKey(coda.sound, onset.sound);
+        if (!allowed.has(key)) expanded.add(key);
+      }
+    }
+  }
+
+  for (const [codaSound, onsetSound] of rule.except ?? []) {
+    expanded.delete(toBoundaryPairKey(codaSound, onsetSound));
+  }
+
+  return expanded;
+}
+
+/**
+ * Expand cluster-constraint rules into concrete [coda, onset] banned pairs.
+ *
+ * This is done at runtime build time, so rules naturally pick up newly added
+ * onset/coda phonemes without manually editing pair lists.
+ */
+export function expandClusterConstraintBans(
+  config: Pick<LanguageConfig, "clusterConstraint" | "phonemeMaps">,
+): [string, string][] {
+  const constraint = config.clusterConstraint;
+  if (!constraint) return [];
+
+  const expanded = new Set<string>();
+  for (const [codaSound, onsetSound] of constraint.banned ?? []) {
+    expanded.add(toBoundaryPairKey(codaSound, onsetSound));
+  }
+
+  if (constraint.rules && constraint.rules.length > 0) {
+    const codaInventory = uniquePositionPhonemes(config.phonemeMaps.coda);
+    const onsetInventory = uniquePositionPhonemes(config.phonemeMaps.onset);
+
+    for (const rule of constraint.rules) {
+      const rulePairs = expandBoundaryRule(rule, codaInventory, onsetInventory);
+      for (const pairKey of rulePairs) expanded.add(pairKey);
+    }
+  }
+
+  return Array.from(expanded)
+    .map(splitBoundaryPairKey)
+    .sort(([codaA, onsetA], [codaB, onsetB]) => {
+      if (codaA < codaB) return -1;
+      if (codaA > codaB) return 1;
+      if (onsetA < onsetB) return -1;
+      if (onsetA > onsetB) return 1;
+      return 0;
+    });
+}
+
+/**
+ * Validate a LanguageConfig, throwing on any detected inconsistency.
+ *
+ * Checks:
+ * - `phonemes[]` contains every phoneme reachable through `phonemeMaps`
+ * - `graphemes[]` contains every grapheme reachable through `graphemeMaps`
+ * - All probability values in `generationWeights` are in [0, 100]
+ *
+ * Call this during development or at startup to catch config errors early.
+ */
+export function validateConfig(config: LanguageConfig): void {
+  // Check phonemes ⊇ phonemeMaps values
+  const phonemeSet = new Set(config.phonemes);
+  for (const position of ["onset", "nucleus", "coda"] as const) {
+    for (const [sound, list] of config.phonemeMaps[position]) {
+      for (const p of list) {
+        if (!phonemeSet.has(p)) {
+          throw new Error(
+            `phonemeMaps.${position} contains phoneme "${p.sound}" (key "${sound}") not found in phonemes[]`
+          );
+        }
+      }
+    }
+  }
+
+  // Check graphemes ⊇ graphemeMaps values
+  const graphemeSet = new Set(config.graphemes);
+  for (const position of ["onset", "nucleus", "coda"] as const) {
+    for (const [sound, list] of config.graphemeMaps[position]) {
+      for (const g of list) {
+        if (!graphemeSet.has(g)) {
+          throw new Error(
+            `graphemeMaps.${position} contains grapheme "${g.form}" (key "${sound}") not found in graphemes[]`
+          );
+        }
+      }
+    }
+  }
+
+  // Check probability values in range
+  const { probability } = config.generationWeights;
+  for (const [key, value] of Object.entries(probability)) {
+    if (value < 0 || value > 100) {
+      throw new Error(
+        `generationWeights.probability.${key} is ${value}, must be in [0, 100]`
+      );
+    }
+  }
+  for (const [key, value] of Object.entries(config.generationWeights.boundaryPolicy)) {
+    if (value < 0 || value > 100) {
+      throw new Error(
+        `generationWeights.boundaryPolicy.${key} is ${value}, must be in [0, 100]`
+      );
+    }
+  }
+
+  if (!config.pronunciation) {
+    throw new Error("pronunciation config is required");
+  }
+  if (!config.pronunciation.stress) {
+    throw new Error("pronunciation.stress is required");
+  }
+
+  const assertProbability = (value: number, label: string): void => {
+    if (!Number.isFinite(value) || value < 0 || value > 100) {
+      throw new Error(`${label} is ${String(value)}, must be in [0, 100]`);
+    }
+  };
+
+  const assertAllowedKeys = (
+    obj: object,
+    allowed: readonly string[],
+    label: string,
+  ): void => {
+    for (const key of Object.keys(obj)) {
+      if (!allowed.includes(key)) {
+        throw new Error(`${label} has unsupported field "${key}"`);
+      }
+    }
+  };
+
+  const stress = config.pronunciation.stress;
+  const primary = stress.primary;
+  const primaryType = primary.type;
+  if (
+    primaryType !== "fixed"
+    && primaryType !== "initial"
+    && primaryType !== "penultimate"
+    && primaryType !== "weight-sensitive"
+    && primaryType !== "ot"
+  ) {
+    throw new Error(`pronunciation.stress.primary.type has invalid value "${String(primaryType)}"`);
+  }
+
+  if (primaryType === "fixed") {
+    assertAllowedKeys(primary, ["type", "fixedPosition"], "pronunciation.stress.primary");
+    const fixedPosition = primary.fixedPosition;
+    if (!Number.isInteger(fixedPosition) || (fixedPosition as number) < 0) {
+      throw new Error("pronunciation.stress.primary.fixedPosition must be an integer >= 0");
+    }
+  } else if (primaryType === "initial" || primaryType === "penultimate") {
+    assertAllowedKeys(primary, ["type"], "pronunciation.stress.primary");
+  } else if (primaryType === "weight-sensitive") {
+    assertAllowedKeys(
+      primary,
+      ["type", "disyllabicWeights", "polysyllabicWeights"],
+      "pronunciation.stress.primary",
+    );
+    const disyllabic = primary.disyllabicWeights as unknown;
+    if (!Array.isArray(disyllabic) || disyllabic.length !== 2) {
+      throw new Error("pronunciation.stress.primary.disyllabicWeights must be a [number, number] tuple");
+    }
+    for (let i = 0; i < disyllabic.length; i++) {
+      const weight = disyllabic[i];
+      if (typeof weight !== "number") {
+        throw new Error(`pronunciation.stress.primary.disyllabicWeights[${i}] must be a number`);
+      }
+    }
+    const poly = primary.polysyllabicWeights;
+    if (!poly) {
+      throw new Error("pronunciation.stress.primary.polysyllabicWeights is required for weight-sensitive");
+    }
+    assertAllowedKeys(
+      poly,
+      ["heavyPenult", "lightPenult", "antepenultHeavy", "antepenultLight", "initial"],
+      "pronunciation.stress.primary.polysyllabicWeights",
+    );
+    for (const key of ["heavyPenult", "lightPenult", "antepenultHeavy", "antepenultLight", "initial"] as const) {
+      const weight = poly[key];
+      if (typeof weight !== "number") {
+        throw new Error(`pronunciation.stress.primary.polysyllabicWeights.${key} must be a number`);
+      }
+    }
+  } else if (primaryType === "ot") {
+    assertAllowedKeys(primary, ["type", "otConfig"], "pronunciation.stress.primary");
+    if (!primary.otConfig || typeof primary.otConfig !== "object") {
+      throw new Error("pronunciation.stress.primary.otConfig is required for ot strategy");
+    }
+  }
+
+  if (!stress.secondary || typeof stress.secondary !== "object") {
+    throw new Error("pronunciation.stress.secondary is required");
+  }
+  if (!stress.rhythmic || typeof stress.rhythmic !== "object") {
+    throw new Error("pronunciation.stress.rhythmic is required");
+  }
+  if (!stress.nucleus || typeof stress.nucleus !== "object") {
+    throw new Error("pronunciation.stress.nucleus is required");
+  }
+
+  assertAllowedKeys(
+    stress.secondary,
+    ["enabled", "probability", "heavyWeight", "lightWeight", "candidateWindow"],
+    "pronunciation.stress.secondary",
+  );
+  assertAllowedKeys(
+    stress.rhythmic,
+    ["enabled", "probability", "requireUnstressedNeighbors"],
+    "pronunciation.stress.rhythmic",
+  );
+  assertAllowedKeys(
+    stress.nucleus,
+    ["stressedNucleusBan", "unstressedNucleusBoost"],
+    "pronunciation.stress.nucleus",
+  );
+
+  assertProbability(stress.secondary.probability, "pronunciation.stress.secondary.probability");
+  assertProbability(stress.rhythmic.probability, "pronunciation.stress.rhythmic.probability");
+
+  if (
+    stress.secondary.candidateWindow !== "first-three"
+    && stress.secondary.candidateWindow !== "all-nonprimary"
+  ) {
+    throw new Error(
+      `pronunciation.stress.secondary.candidateWindow has invalid value "${String(stress.secondary.candidateWindow)}"`,
+    );
+  }
+
+  if (stress.nucleus.stressedNucleusBan) {
+    for (const [idx, sound] of stress.nucleus.stressedNucleusBan.entries()) {
+      if (!sound) {
+        throw new Error(`pronunciation.stress.nucleus.stressedNucleusBan[${idx}] must be non-empty`);
+      }
+    }
+  }
+  if (stress.nucleus.unstressedNucleusBoost) {
+    for (const [sound, boost] of Object.entries(stress.nucleus.unstressedNucleusBoost)) {
+      if (!sound) {
+        throw new Error("pronunciation.stress.nucleus.unstressedNucleusBoost has an empty sound key");
+      }
+      if (!Number.isFinite(boost) || boost < 0) {
+        throw new Error(`pronunciation.stress.nucleus.unstressedNucleusBoost.${sound} must be >= 0`);
+      }
+    }
+  }
+
+  const aspiration = config.pronunciation.aspiration;
+  if (aspiration) {
+    assertAllowedKeys(
+      aspiration,
+      ["enabled", "targets", "rules", "fallbackProbability"],
+      "pronunciation.aspiration",
+    );
+    assertProbability(aspiration.fallbackProbability, "pronunciation.aspiration.fallbackProbability");
+
+    if (!Array.isArray(aspiration.targets) || aspiration.targets.length === 0) {
+      throw new Error("pronunciation.aspiration.targets must contain at least one selector");
+    }
+    aspiration.targets.forEach((target, targetIndex) => {
+      assertAllowedKeys(
+        target,
+        ["segment", "index", "sounds", "manner", "place", "voiced"],
+        `pronunciation.aspiration.targets[${targetIndex}]`,
+      );
+      if (!["onset", "nucleus", "coda"].includes(target.segment)) {
+        throw new Error(`pronunciation.aspiration.targets[${targetIndex}].segment has invalid value "${String(target.segment)}"`);
+      }
+      if (target.index != null && (!Number.isInteger(target.index) || target.index < 0)) {
+        throw new Error(`pronunciation.aspiration.targets[${targetIndex}].index must be an integer >= 0`);
+      }
+      if (target.sounds && target.sounds.some((sound) => !sound)) {
+        throw new Error(`pronunciation.aspiration.targets[${targetIndex}].sounds must not contain empty values`);
+      }
+    });
+
+    if (!Array.isArray(aspiration.rules) || aspiration.rules.length === 0) {
+      throw new Error("pronunciation.aspiration.rules must contain at least one rule");
+    }
+    const seenRuleIds = new Set<string>();
+    aspiration.rules.forEach((rule, ruleIndex) => {
+      assertAllowedKeys(
+        rule,
+        ["id", "when", "probability"],
+        `pronunciation.aspiration.rules[${ruleIndex}]`,
+      );
+      if (!rule.id || typeof rule.id !== "string") {
+        throw new Error(`pronunciation.aspiration.rules[${ruleIndex}].id must be a non-empty string`);
+      }
+      if (seenRuleIds.has(rule.id)) {
+        throw new Error(`pronunciation.aspiration.rules has duplicate id "${rule.id}"`);
+      }
+      seenRuleIds.add(rule.id);
+      assertProbability(rule.probability, `pronunciation.aspiration.rules[${ruleIndex}].probability`);
+
+      assertAllowedKeys(
+        rule.when,
+        ["wordInitial", "stressed", "postStressed", "syllableIndexClass", "previousCodaSounds"],
+        `pronunciation.aspiration.rules[${ruleIndex}].when`,
+      );
+
+      if (
+        rule.when.syllableIndexClass != null
+        && !["initial", "medial", "final"].includes(rule.when.syllableIndexClass)
+      ) {
+        throw new Error(
+          `pronunciation.aspiration.rules[${ruleIndex}].when.syllableIndexClass has invalid value "${String(rule.when.syllableIndexClass)}"`,
+        );
+      }
+      if (rule.when.previousCodaSounds) {
+        if (rule.when.previousCodaSounds.length === 0) {
+          throw new Error(
+            `pronunciation.aspiration.rules[${ruleIndex}].when.previousCodaSounds must not be empty`,
+          );
+        }
+        if (rule.when.previousCodaSounds.some((sound) => !sound)) {
+          throw new Error(
+            `pronunciation.aspiration.rules[${ruleIndex}].when.previousCodaSounds must not contain empty values`,
+          );
+        }
+      }
+    });
+  }
+
+  const phonemeSounds = new Set(config.phonemes.map(p => p.sound));
+  const onsetSounds = new Set(config.phonemeMaps.onset.keys());
+  const nucleusSounds = new Set(config.phonemeMaps.nucleus.keys());
+  const codaSounds = new Set(config.phonemeMaps.coda.keys());
+  const gapSpellingVariantKeys = new Set<string>();
+
+  for (let i = 0; i < (config.gapSpellings?.length ?? 0); i++) {
+    const gapSpelling = config.gapSpellings![i];
+    if (!gapSpelling.name || typeof gapSpelling.name !== "string") {
+      throw new Error(`gapSpellings[${i}].name must be a non-empty string`);
+    }
+    if (!Array.isArray(gapSpelling.phonemes) || gapSpelling.phonemes.length === 0) {
+      throw new Error(`gapSpellings[${i}].phonemes must be a non-empty array`);
+    }
+    for (let j = 0; j < gapSpelling.phonemes.length; j++) {
+      const sound = gapSpelling.phonemes[j];
+      if (!sound) {
+        throw new Error(`gapSpellings[${i}].phonemes[${j}] must be non-empty`);
+      }
+      if (!phonemeSounds.has(sound)) {
+        throw new Error(`gapSpellings[${i}].phonemes[${j}] contains unknown phoneme "${sound}"`);
+      }
+    }
+    if (!gapSpelling.replacement || typeof gapSpelling.replacement !== "string") {
+      throw new Error(`gapSpellings[${i}].replacement must be a non-empty string`);
+    }
+    if (gapSpelling.weight !== undefined && (!Number.isFinite(gapSpelling.weight) || gapSpelling.weight <= 0)) {
+      throw new Error(`gapSpellings[${i}].weight must be a finite number > 0`);
+    }
+    if (
+      gapSpelling.targetLayer !== "grapheme"
+      && gapSpelling.targetLayer !== "spellingRule"
+      && gapSpelling.targetLayer !== "phonotactics"
+      && gapSpelling.targetLayer !== "morphology"
+      && gapSpelling.targetLayer !== "unknown"
+    ) {
+      throw new Error(`gapSpellings[${i}].targetLayer must be one of grapheme|spellingRule|phonotactics|morphology|unknown`);
+    }
+    const gapKey = gapSpelling.phonemes.join("\u0001");
+    const variantKey = [
+      gapKey,
+      gapSpelling.replacement,
+    ].join("\u0001");
+    if (gapSpellingVariantKeys.has(variantKey)) {
+      throw new Error(`gapSpellings has duplicate variant for "${gapSpelling.name}"`);
+    }
+    gapSpellingVariantKeys.add(variantKey);
+  }
+
+  for (let i = 0; i < (config.spellingRules?.length ?? 0); i++) {
+    const rule = config.spellingRules![i];
+    if (isWholeWordAnchoredSpellingRule(rule)) {
+      throw new Error(
+        `spellingRules[${i}] (${rule.name}) must not use whole-word anchored patterns; move lexical rewrites to gapSpellings`,
+      );
+    }
+  }
+
+  const assertKnownPositionSound = (
+    sound: string,
+    position: "onset" | "nucleus" | "coda",
+    label: string,
+  ): void => {
+    const lookup = position === "onset"
+      ? onsetSounds
+      : position === "nucleus"
+        ? nucleusSounds
+        : codaSounds;
+    if (!lookup.has(sound)) {
+      throw new Error(`${label} contains unknown ${position} phoneme "${sound}"`);
+    }
+  };
+
+  if (aspiration) {
+    aspiration.targets.forEach((target, targetIndex) => {
+      if (!target.sounds) return;
+      if (target.sounds.length === 0) {
+        throw new Error(`pronunciation.aspiration.targets[${targetIndex}].sounds must not be empty`);
+      }
+      for (const sound of target.sounds) {
+        assertKnownPositionSound(
+          sound,
+          target.segment,
+          `pronunciation.aspiration.targets[${targetIndex}].sounds`,
+        );
+      }
+    });
+
+    aspiration.rules.forEach((rule, ruleIndex) => {
+      for (const sound of rule.when.previousCodaSounds ?? []) {
+        assertKnownPositionSound(
+          sound,
+          "coda",
+          `pronunciation.aspiration.rules[${ruleIndex}].when.previousCodaSounds`,
+        );
+      }
+    });
+  }
+  const validateBridgeOnsets = (pairs: [string, number][], label: string): void => {
+    for (const [sound, weight] of pairs) {
+      if (!sound) {
+        throw new Error(`${label} contains an empty sound`);
+      }
+      if (!phonemeSounds.has(sound)) {
+        throw new Error(`${label} contains unknown phoneme "${sound}"`);
+      }
+      if (!Number.isFinite(weight) || weight <= 0) {
+        throw new Error(
+          `${label} has invalid weight ${String(weight)} for "${sound}" (must be > 0)`
+        );
+      }
+    }
+  };
+
+  if (config.hiatusPolicy) {
+    const guard = config.hiatusPolicy.planGuardProbability;
+    if (guard < 0 || guard > 100) {
+      throw new Error(
+        `hiatusPolicy.planGuardProbability is ${guard}, must be in [0, 100]`
+      );
+    }
+    const glideMultiplier = config.hiatusPolicy.postVowelGlideMultiplier;
+    if (!Number.isFinite(glideMultiplier) || glideMultiplier < 0) {
+      throw new Error(
+        `hiatusPolicy.postVowelGlideMultiplier is ${String(glideMultiplier)}, must be a finite number >= 0`
+      );
+    }
+    validateBridgeOnsets(config.hiatusPolicy.fallbackBridgeOnsets, "hiatusPolicy.fallbackBridgeOnsets");
+  }
+
+  if (config.morphology?.boundaryPolicy?.fallbackBridgeOnsets) {
+    validateBridgeOnsets(
+      config.morphology.boundaryPolicy.fallbackBridgeOnsets,
+      "morphology.boundaryPolicy.fallbackBridgeOnsets",
+    );
+  }
+
+  const validatePhonologicalCondition = (
+    condition: PhonologicalCondition,
+    label: string,
+  ): void => {
+    if (condition.position !== "preceding" && condition.position !== "following") {
+      throw new Error(`${label}.position has invalid value "${String(condition.position)}"`);
+    }
+    if (condition.sounds) {
+      if (condition.sounds.length === 0) {
+        throw new Error(`${label}.sounds must not be empty`);
+      }
+      for (const sound of condition.sounds) {
+        if (!sound) {
+          throw new Error(`${label}.sounds must not contain empty values`);
+        }
+        if (!phonemeSounds.has(sound)) {
+          throw new Error(`${label}.sounds contains unknown phoneme "${sound}"`);
+        }
+      }
+    }
+    if (condition.manner && condition.manner.length === 0) {
+      throw new Error(`${label}.manner must not be empty`);
+    }
+    if (condition.place && condition.place.length === 0) {
+      throw new Error(`${label}.place must not be empty`);
+    }
+  };
+
+  const validateMorphophonemicRule = (
+    affix: Affix,
+    rule: MorphophonemicRule,
+    label: string,
+  ): void => {
+    if (!rule.name || typeof rule.name !== "string") {
+      throw new Error(`${label}.name must be a non-empty string`);
+    }
+    if (rule.priority != null && (!Number.isFinite(rule.priority) || rule.priority < 0)) {
+      throw new Error(`${label}.priority must be a finite number >= 0`);
+    }
+    if (rule.target != null && rule.target !== "edge" && rule.target !== "nucleus") {
+      throw new Error(`${label}.target has invalid value "${String(rule.target)}"`);
+    }
+    if (rule.replaceSound && !phonemeSounds.has(rule.replaceSound)) {
+      throw new Error(`${label}.replaceSound contains unknown phoneme "${rule.replaceSound}"`);
+    }
+    const hasWrittenMatch = rule.writtenMatch instanceof RegExp;
+    const hasWrittenReplace = typeof rule.writtenReplace === "string";
+    if (hasWrittenMatch !== hasWrittenReplace) {
+      throw new Error(`${label} must provide both writtenMatch and writtenReplace together`);
+    }
+    if (!rule.replaceSound && !hasWrittenMatch) {
+      throw new Error(`${label} must define at least one action (replaceSound or written rewrite)`);
+    }
+    if (rule.phonologicalCondition) {
+      validatePhonologicalCondition(rule.phonologicalCondition, `${label}.phonologicalCondition`);
+      const expectedPosition = affix.type === "suffix" ? "preceding" : "following";
+      if (rule.phonologicalCondition.position !== expectedPosition) {
+        throw new Error(
+          `${label}.phonologicalCondition.position must be "${expectedPosition}" for ${affix.type} rules`,
+        );
+      }
+    }
+  };
+
+  if (config.morphology) {
+    if (config.morphology.enabled) {
+      for (const mode of ["text", "lexicon"] as const) {
+        const weights = config.morphology.templateWeights[mode];
+        const entries: Array<[keyof typeof weights, number]> = [
+          ["bare", weights.bare],
+          ["suffixed", weights.suffixed],
+          ["prefixed", weights.prefixed],
+          ["both", weights.both],
+        ];
+        let totalWeight = 0;
+        for (const [template, weight] of entries) {
+          if (!Number.isFinite(weight) || weight < 0) {
+            throw new Error(`morphology.templateWeights.${mode}.${template} must be a finite number >= 0`);
+          }
+          totalWeight += weight;
+        }
+        if (!Number.isFinite(totalWeight) || totalWeight <= 0) {
+          throw new Error(`morphology.templateWeights.${mode} must have positive total weight`);
+        }
+        if (weights.prefixed > 0 && config.morphology.prefixes.length === 0) {
+          throw new Error(
+            `morphology.templateWeights.${mode}.prefixed requires at least one morphology.prefixes entry`,
+          );
+        }
+        if (weights.suffixed > 0 && config.morphology.suffixes.length === 0) {
+          throw new Error(
+            `morphology.templateWeights.${mode}.suffixed requires at least one morphology.suffixes entry`,
+          );
+        }
+        if (weights.both > 0 && config.morphology.prefixes.length === 0) {
+          throw new Error(
+            `morphology.templateWeights.${mode}.both requires at least one morphology.prefixes entry`,
+          );
+        }
+        if (weights.both > 0 && config.morphology.suffixes.length === 0) {
+          throw new Error(
+            `morphology.templateWeights.${mode}.both requires at least one morphology.suffixes entry`,
+          );
+        }
+      }
+    }
+
+    for (let i = 0; i < config.morphology.prefixes.length; i++) {
+      const affix = config.morphology.prefixes[i];
+      if (!affix.morphophonemicRules) continue;
+      for (let j = 0; j < affix.morphophonemicRules.length; j++) {
+        validateMorphophonemicRule(
+          affix,
+          affix.morphophonemicRules[j],
+          `morphology.prefixes[${i}].morphophonemicRules[${j}]`,
+        );
+      }
+    }
+    for (let i = 0; i < config.morphology.suffixes.length; i++) {
+      const affix = config.morphology.suffixes[i];
+      if (!affix.morphophonemicRules) continue;
+      for (let j = 0; j < affix.morphophonemicRules.length; j++) {
+        validateMorphophonemicRule(
+          affix,
+          affix.morphophonemicRules[j],
+          `morphology.suffixes[${i}].morphophonemicRules[${j}]`,
+        );
+      }
+    }
+  }
+
+  if (config.clusterConstraint?.banned) {
+    for (const [codaSound, onsetSound] of config.clusterConstraint.banned) {
+      assertKnownPositionSound(codaSound, "coda", "clusterConstraint.banned");
+      assertKnownPositionSound(onsetSound, "onset", "clusterConstraint.banned");
+    }
+  }
+
+  if (config.clusterConstraint?.rules) {
+    config.clusterConstraint.rules.forEach((rule, index) => {
+      for (const sound of rule.coda.sounds ?? []) {
+        assertKnownPositionSound(sound, "coda", `clusterConstraint.rules[${index}].coda.sounds`);
+      }
+      for (const sound of rule.onset.sounds ?? []) {
+        assertKnownPositionSound(sound, "onset", `clusterConstraint.rules[${index}].onset.sounds`);
+      }
+      for (const [codaSound, onsetSound] of rule.except ?? []) {
+        assertKnownPositionSound(codaSound, "coda", `clusterConstraint.rules[${index}].except`);
+        assertKnownPositionSound(onsetSound, "onset", `clusterConstraint.rules[${index}].except`);
+      }
+    });
+  }
+
+  // Top-down phoneme length weights are required for both modes.
+  if (!config.phonemeLengthWeights?.text?.length) {
+    throw new Error("phonemeLengthWeights.text is required and must be non-empty");
+  }
+  if (!config.phonemeLengthWeights?.lexicon?.length) {
+    throw new Error("phonemeLengthWeights.lexicon is required and must be non-empty");
+  }
+  if (!config.phonemeToSyllableWeights?.text || Object.keys(config.phonemeToSyllableWeights.text).length === 0) {
+    throw new Error("phonemeToSyllableWeights.text is required and must be non-empty");
+  }
+  if (!config.phonemeToSyllableWeights?.lexicon || Object.keys(config.phonemeToSyllableWeights.lexicon).length === 0) {
+    throw new Error("phonemeToSyllableWeights.lexicon is required and must be non-empty");
+  }
+
+  const validateWeightedPairs = (
+    pairs: [number, number][],
+    label: string,
+    keyType: "phoneme" | "syllable" = "phoneme",
+  ): void => {
+    let total = 0;
+    for (const [value, weight] of pairs) {
+      if (!Number.isFinite(value) || !Number.isInteger(value) || value < 1) {
+        throw new Error(`${label} has invalid ${keyType} key "${value}" (must be integer >= 1)`);
+      }
+      if (!Number.isFinite(weight) || weight <= 0) {
+        throw new Error(`${label} has invalid weight "${weight}" for ${value} (must be > 0)`);
+      }
+      total += weight;
+    }
+    if (total <= 0) {
+      throw new Error(`${label} has zero total weight`);
+    }
+  };
+
+  validateWeightedPairs(config.phonemeLengthWeights.text, "phonemeLengthWeights.text");
+  validateWeightedPairs(config.phonemeLengthWeights.lexicon, "phonemeLengthWeights.lexicon");
+
+  for (const mode of ["text", "lexicon"] as const) {
+    const phonemeLengthSet = new Set(
+      config.phonemeLengthWeights[mode].map(([phonemeCount]) => phonemeCount),
+    );
+
+    for (const [phonemeCountStr, weights] of Object.entries(config.phonemeToSyllableWeights[mode])) {
+      const phonemeCount = Number(phonemeCountStr);
+      if (!Number.isInteger(phonemeCount) || phonemeCount < 1) {
+        throw new Error(`phonemeToSyllableWeights.${mode} has invalid phoneme length key "${phonemeCountStr}"`);
+      }
+      if (!Array.isArray(weights) || weights.length === 0) {
+        throw new Error(`phonemeToSyllableWeights.${mode}.${phonemeCount} must be a non-empty array`);
+      }
+      validateWeightedPairs(weights, `phonemeToSyllableWeights.${mode}.${phonemeCount}`, "syllable");
+    }
+
+    for (const phonemeCount of phonemeLengthSet) {
+      if (!config.phonemeToSyllableWeights[mode][phonemeCount]) {
+        throw new Error(
+          `phonemeToSyllableWeights.${mode}.${phonemeCount} is required because phonemeLengthWeights.${mode} includes ${phonemeCount}`,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Compute sonority levels for every phoneme from the language config's
+ * sonority hierarchy. This guarantees levels stay consistent with the
+ * hierarchy — no stale cache possible.
+ */
+export function computeSonorityLevels(config: LanguageConfig): Map<Phoneme, number> {
+  const { mannerOfArticulation, placeOfArticulation, voicedBonus, tenseBonus } =
+    config.sonorityHierarchy;
+
+  return new Map(
+    config.phonemes.map((p) => [
+      p,
+      (mannerOfArticulation[p.mannerOfArticulation] ?? 0) +
+        (placeOfArticulation[p.placeOfArticulation] ?? 0) +
+        (p.voiced ? voicedBonus : 0) +
+        (p.tense ? tenseBonus : 0),
+    ]),
+  );
+}
+
+/**
+ * Coarse manner-only sonority rank for a phoneme.
+ *
+ * Returns the manner-of-articulation component from the language config's
+ * sonority hierarchy, without place/voicing/tense adjustments. This groups
+ * all stops together, all fricatives together, etc.
+ *
+ * Used for SSP validation at syllable boundaries where manner *class* matters
+ * more than fine-grained place distinctions. (All stops are equally bad in a
+ * three-stop cluster like /kt.p/, regardless of which places are involved.)
+ */
+export function sonorityClass(p: Phoneme, config: LanguageConfig): number {
+  return config.sonorityHierarchy.mannerOfArticulation[p.mannerOfArticulation] ?? 0;
+}

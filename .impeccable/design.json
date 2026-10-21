@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T03:45:26Z",
+  "title": "Design System: Unglish",
+  "extensions": {
+    "colorMeta": {
+      "page": {
+        "role": "neutral",
+        "displayName": "Page white"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Near-black ink"
+      },
+      "link": {
+        "role": "primary",
+        "displayName": "Link blue"
+      },
+      "visited": {
+        "role": "primary",
+        "displayName": "Visited purple"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule grey"
+      },
+      "dark-page": {
+        "role": "neutral",
+        "displayName": "Dark page"
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Pale ink"
+      },
+      "dark-link": {
+        "role": "primary",
+        "displayName": "Dark link blue"
+      },
+      "dark-visited": {
+        "role": "primary",
+        "displayName": "Visited lavender"
+      },
+      "dark-rule": {
+        "role": "neutral",
+        "displayName": "Light rule"
+      },
+      "print-ink": {
+        "role": "neutral",
+        "displayName": "Print black"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Generated word",
+        "purpose": "The responsive word specimen on discovery, generator and edition pages."
+      },
+      "title": {
+        "displayName": "Page title",
+        "purpose": "The document heading in the shared header."
+      },
+      "headline": {
+        "displayName": "Section heading",
+        "purpose": "Second-level headings in the document body."
+      },
+      "body": {
+        "displayName": "Body and controls",
+        "purpose": "Paragraphs, navigation, lists and inherited native control text."
+      },
+      "pronunciation": {
+        "displayName": "Pronunciation",
+        "purpose": "The IPA guide below a generated word."
+      },
+      "small": {
+        "displayName": "Supporting text",
+        "purpose": "Footnotes, footer copy and live status paragraphs."
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "narrow-document",
+        "value": "32rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Native button",
+      "kind": "button",
+      "refersTo": "native-button",
+      "description": "One browser-defined treatment for generation, playback and copying; disabled states remain native.",
+      "html": "<div class=\"ds-example\"><button class=\"ds-button\" type=\"button\">Another word</button> <button class=\"ds-button\" type=\"button\" disabled>Stop</button></div>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-button { font: inherit; min-height: 2.25rem; padding: .2rem .65rem; } .ds-button:enabled { cursor: pointer; }"
+    },
+    {
+      "name": "Seed textarea",
+      "kind": "input",
+      "refersTo": "seed-field",
+      "description": "A labelled, vertically resizable native field that fits its container.",
+      "html": "<div class=\"ds-example\"><label class=\"ds-seed-label\">Seed <textarea class=\"ds-seed-field\" rows=\"2\" maxlength=\"256\" autocomplete=\"off\" spellcheck=\"false\"></textarea></label></div>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-seed-label { display: block; margin: .75rem 0; } .ds-seed-field { display: block; font: inherit; max-width: 100%; width: min(100%, 28rem); padding: .2rem .4rem; resize: vertical; }"
+    },
+    {
+      "name": "Native select",
+      "kind": "input",
+      "refersTo": "native-select",
+      "description": "Settings use ordinary selects beneath their labels, with browser-owned open and selected states.",
+      "html": "<div class=\"ds-example\"><label class=\"ds-select-label\">Syllables <select class=\"ds-select\"><option>Automatic</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select></label></div>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-select-label { display: block; margin: .75rem 0; } .ds-select { display: block; font: inherit; min-height: 2.25rem; max-width: 100%; }"
+    },
+    {
+      "name": "Link-list navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Underlined links wrap naturally; current-page state is semantic.",
+      "html": "<nav class=\"ds-example\" aria-label=\"Main navigation\"><ul class=\"ds-nav-list\"><li><a href=\"index.html\" aria-current=\"page\">Unglish</a></li><li><a href=\"generator.html\">Generator</a></li><li><a href=\"index.html#editions\">Editions</a></li><li><a href=\"index.html#about\">About</a></li><li><a href=\"https://github.com/unglish/word-generator\">Source</a></li></ul></nav>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-example a { color: var(--link); text-underline-offset: .12em; } .ds-example a:visited { color: var(--visited); } .ds-example a:hover { text-decoration-thickness: .15em; } .ds-nav-list { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; padding: 0; margin: .5rem 0 0; list-style: none; }"
+    },
+    {
+      "name": "Native disclosure",
+      "kind": "custom",
+      "refersTo": "disclosure",
+      "description": "The native disclosure triangle and open state expose supporting text.",
+      "html": "<details class=\"ds-example\"><summary class=\"ds-summary\">Who is authorised to produce Unglish words?</summary><p class=\"ds-disclosure-text\">Only me and you.</p></details>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-summary { width: fit-content; padding: .35rem 0; cursor: pointer; } .ds-disclosure-text { max-width: 70ch; margin: .25rem 0 .75rem; }"
+    },
+    {
+      "name": "Word specimen",
+      "kind": "custom",
+      "refersTo": "word-specimen",
+      "description": "A responsive word and pronunciation sit above wrapping native actions and a thin rule.",
+      "html": "<section class=\"ds-example ds-specimen\" aria-label=\"Word discovery\"><div aria-live=\"polite\" aria-atomic=\"true\"><h2 class=\"ds-word\">sochede</h2><p class=\"ds-pronunciation\">/ˈsɔ.tʃiːd/</p></div><div class=\"ds-actions\"><button class=\"ds-button\" type=\"button\">Another word</button><button class=\"ds-button\" type=\"button\">Listen</button><button class=\"ds-button\" type=\"button\" disabled>Stop</button></div></section>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-button { font: inherit; min-height: 2.25rem; padding: .2rem .65rem; } .ds-button:enabled { cursor: pointer; } .ds-specimen { padding: 1.5rem 0 1.25rem; border-bottom: 1px solid var(--rule); } .ds-word { font-size: clamp(2.4rem, 5.8vw, 4rem); margin: 0; overflow-wrap: anywhere; line-height: 1.2; } .ds-pronunciation { font-size: 1.25rem; overflow-wrap: anywhere; max-width: 70ch; margin: .25rem 0 1rem; } .ds-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem .75rem; margin: .75rem 0; }"
+    },
+    {
+      "name": "Edition facts",
+      "kind": "custom",
+      "description": "Definition-list pairs become a single column at the shared narrow-screen breakpoint.",
+      "html": "<dl class=\"ds-example ds-facts\"><dt>Melody</dt><dd>Generated with the word</dd><dt>Common English word</dt><dd>Checked against the original word list</dd></dl>",
+      "css": ".ds-example { color-scheme: light dark; --page: #fff; --ink: #111; --link: #0000ee; --visited: #551a8b; --rule: #767676; background: var(--page); color: var(--ink); font-family: \"Times New Roman\", Times, serif; font-size: 1.125rem; line-height: 1.5; } @media (prefers-color-scheme: dark) { .ds-example { --page: #161616; --ink: #eee; --link: #9dbbff; --visited: #d7b3ff; --rule: #999; } } .ds-example :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; } .ds-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .25rem 1rem; max-width: 45rem; } .ds-facts dt { font-weight: bold; } .ds-facts dd { margin: 0; overflow-wrap: anywhere; } @media (max-width: 32rem) { .ds-facts { grid-template-columns: 1fr; gap: 0; } .ds-facts dd { margin-bottom: .5rem; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The early-web experimental dictionary",
+    "overview": "Unglish uses the familiar materials of Craigslist and late-1990s HTML: a plain page, system serif text, underlined links and native browser controls. The humour belongs in the writing. CSS provides legibility, responsive flow and accessible interaction.\n\nThe rendered site is a document with useful controls. Its browser conventions are intentional, including native disclosure markers and platform-dependent button and field appearance. The rejected polished print-reference-book direction is not part of this system.",
+    "keyCharacteristics": [
+      "Left-aligned text, visible links and simple dividing rules.",
+      "System serif typography, including inherited text in controls.",
+      "Native controls and disclosures with clear keyboard focus.",
+      "Light and dark palettes with the same reading order."
+    ],
+    "rules": [
+      {
+        "name": "The Visible Link Rule",
+        "body": "Keep links underlined; increase underline thickness on hover and retain the visited colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Browser Serif Rule",
+        "body": "Preserve the system serif and native heading hierarchy; do not substitute a custom display face.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "**Do** use semantic headings, links, lists, fieldsets and disclosures.",
+      "**Do** retain native controls, including their browser-specific states.",
+      "**Do** preserve visible keyboard focus and allow controls and text to wrap.",
+      "**Do** use the matching light or dark palette across text, links and rules."
+    ],
+    "donts": [
+      "**Don't** introduce cards, custom fonts, illustrated paper or decorative motion.",
+      "**Don't** replace underlined navigation links with decorative controls.",
+      "**Don't** turn the native-web document into a polished print-reference-book layout."
+    ]
+  }
+}
